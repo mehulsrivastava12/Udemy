@@ -22,7 +22,7 @@
 
 		<h3 class="text-center mb-3">Sign Up As User</h3>
 		<div class="card" style="width:600px; margin-left:250px;">
-		<form action="login" method="post">
+		<form action="signup-user" method="post">
 			<div class="form-group mt-5 ml-5 mr-5">
 				<label for="firstName">First Name</label> <input type="text"
 					class="form-control" id="firstName" aria-describedby="emailHelp"
@@ -58,7 +58,7 @@
 			
 			<div class="text-center mb-2">
 			<span>SignUp As Instructor !!  
-				<a href="sign_instructor">SignUp As Instructor</a></span>
+				<a href="sign-instructor">SignUp As Instructor</a></span>
 			</div>
 
 		</form>

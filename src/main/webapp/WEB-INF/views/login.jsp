@@ -20,7 +20,7 @@
 		<h3 class="text-center mb-5">Log In As User</h3>
 		<div class="card" style="width: 600px;
     margin-left: 250px;">
-		<form action="${pageContext.request.contextPath}/" method="post">
+		<form action="login-user" method="post">
 			<div class="form-group mt-5 ml-5 mr-5">
 				<label for="exampleInputEmail1">Email</label> <input type="email"
 					class="form-control" id="exampleInputEmail1"

@@ -19,7 +19,7 @@
 		<h3 class="text-center mb-5">Log In As Instructor</h3>
 		<div class="card" style="width: 600px;
     margin-left: 250px;">
-		<form action="coursesData" method="post">
+		<form action="courses-Data" method="post">
 			<div class="form-group mt-5 ml-5 mr-5">
 				<label for="exampleInputEmail1">Email</label> <input type="email"
 					class="form-control" id="exampleInputEmail1"
@@ -37,7 +37,7 @@
 			</div>
 			<div class="text-center mb-2">
 			<span>Don't Have A Account?  
-				<a href="sign_instructor">SignUp As Instructor</a></span>
+				<a href="sign-instructor">SignUp As Instructor</a></span>
 			</div>
 			
 		</form>

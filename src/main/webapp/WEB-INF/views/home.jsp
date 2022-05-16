@@ -13,7 +13,7 @@
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> Courses </a>
+					aria-expanded="false">My Courses </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="#">Data Structure</a> <a
 							class="dropdown-item" href="#">Full Stack Developer</a> <a
@@ -39,21 +39,32 @@
 		</div>
 	</nav>
 
-	<h1 class="text-center mb-5">Welcome To OnLearning</h1>
-	<div class="container mt-5 d-flex">
-	<d:forEach items="${courses }" var="p">
-	<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="2.png" alt="Card image cap">
-  <div class="card-body">
-  
-    <h5 class="card-title">${p.title }</h5>
-    <p class="card-text">${p.description }</p>
-    <p class="card-text font-weight-bold">${p.instructor}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-    
-  </div>
-</div>
-</d:forEach>
+	<div class="container mt-3">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="text-center mb-3">Welcome To OnLearning</h1>
+				<table class="table table-hover">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">Course Title</th>
+							<th scope="col">Course Instructor</th>
+							<th scope="col">Course Description</th>
+							<th scope="col">Course Link</th>
+						</tr>
+					</thead>
+					<tbody>
+						<d:forEach items="${courses }" var="p">
+							<tr>
+								<th scope="row">${p.title }</th>
+								<td>${p.instructor }</td>
+								<td>${p.description }</td>
+								<td><a href="${p.link }">Click Here</a></td>
+							</tr>
+						</d:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

@@ -3,6 +3,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<%@ include file="./base.jsp" %>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
@@ -22,7 +23,7 @@
 
 		<h3 class="text-center mb-3">Sign Up As A Instructor</h3>
 		<div class="card" style="width:600px; margin-left:250px;">
-		<form action="login-instructor" method="post">
+		<form action="signup-instructor" method="post">
 			<div class="form-group mt-5 ml-5 mr-5">
 				<label for="firstName">First Name</label> <input type="text"
 					class="form-control" id="firstName" aria-describedby="emailHelp"
