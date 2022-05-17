@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
 import udemyapp.dao.CourseDao;
+import udemyapp.dao.ILoginDao;
 import udemyapp.dao.InstructorDao;
 import udemyapp.dao.UdemyDao;
 import udemyapp.model.Course;
@@ -30,6 +32,8 @@ public class MainController {
 	private InstructorDao instructorDao;
 	@Autowired
 	private CourseDao courseDao;
+	@Autowired
+	ILoginDao loginDao;
 	
 	@RequestMapping("/")
 	public String index(Model m) {
@@ -45,9 +49,17 @@ public class MainController {
 	}
 	
 	@RequestMapping("/log-in")
+	public String logOut(Model mo) {
+		mo.addAttribute("title","Index");
+		return "login";
+	}
+	
+	@RequestMapping("/log-out")
 	public String signUp(Model mo) {
 		mo.addAttribute("title","LogIn");
-		return "login";
+		List<Course> courses = courseDao.getAllCourse();
+		mo.addAttribute("courses",courses);
+		return "index";
 	}
 	
 	@RequestMapping("/log-instructor")
@@ -57,10 +69,7 @@ public class MainController {
 	}
 	
 	@RequestMapping("/login-user")
-	public String loginUser(Model mod) {
-		mod.addAttribute("title","Home");
-		List<Course> courses = courseDao.getAllCourse();
-		mod.addAttribute("courses",courses);
+	public String loginUser() {
 		return "home";
 	}
 	
@@ -76,6 +85,14 @@ public class MainController {
 		return "login_instructor";
 	}
 	
+	@RequestMapping("/my-profile")
+	public String myProfile(Model model) {
+		model.addAttribute("title","MyProfile");
+		return "myprofile";
+	}
+	
+	
+	
 	@RequestMapping("/courses-Data")
 	public String coursesdata(Model model) {
 		model.addAttribute("title","Courses");
@@ -86,11 +103,6 @@ public class MainController {
 	public String signupInstructor(Model modelm) {
 		modelm.addAttribute("title","LogIn");
 		return "login_instructor";
-	}
-	
-	@PostMapping("/login-user")
-	public String checkUser(@RequestParam("email") String email,@RequestParam("password") String password) {
-		
 	}
 	
 	@RequestMapping(value="/signup-user",method=RequestMethod.POST)
@@ -116,4 +128,36 @@ public class MainController {
 		redirectView.setUrl(request.getContextPath()+"/");
 		return redirectView;
 	} 
+	
+	@PostMapping("/login-user")
+	public String checkUser(@RequestParam("email") String email,@RequestParam("password") String password,Model mod) {
+		boolean loginFlag=loginDao.validateUser(email, password);
+		if(loginFlag==true) {
+			mod.addAttribute("title","Home");
+			List<Course> courses = courseDao.getAllCourse();
+			mod.addAttribute("courses",courses);
+			return "home";
+		}
+		else {
+			return "login";
+		}
+	}
+	
+	@PostMapping("/courses-Data")
+	public String checkInstructor(@RequestParam("email") String email,@RequestParam("password") String password,Model mod) {
+		boolean loginFlag1=loginDao.validateInstructor(email, password);
+		if(loginFlag1==true) {
+			mod.addAttribute("title","Courses");
+			return "coursesData";
+		}
+		else {
+			return "login_instructor";
+		}
+	}
+	
+	@RequestMapping("/update/{productId}")
+	public String updateForm() {
+
+		return "update_form";
+	}
 }

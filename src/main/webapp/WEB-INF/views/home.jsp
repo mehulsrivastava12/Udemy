@@ -30,12 +30,17 @@
 				<button class="btn btn-outline-primary my-2 my-sm-0 ml-2"
 					type="submit">Search</button>
 			</form>
-			<form action="log-in" method="post">
-				<button class="btn btn-outline-dark ml-5">LogIn</button>
+			<form action="log-out" method="post">
+				<button class="btn btn-outline-dark ml-5">LogOut</button>
 			</form>
-			<form action="sign-up" method="post">
-				<button class="btn btn-outline-dark my-2 my-sm-0 ml-5">SignUp</button>
-			</form>
+			<d:forEach items="${users }" var="us">
+			<tr>
+			<th scope="row">${us.uid }</th>
+			<td>${us.email }</td>
+			</tr>
+			</d:forEach>
+			
+	
 		</div>
 	</nav>
 
