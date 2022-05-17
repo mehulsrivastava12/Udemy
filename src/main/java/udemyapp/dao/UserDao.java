@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import udemyapp.model.User;
 
 @Component
-public class UdemyDao {
+public class UserDao {
 
 	@Autowired
 	private HibernateTemplate hibernateTemplate;

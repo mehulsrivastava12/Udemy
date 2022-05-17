@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
+<%@taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
 <%@ include file="./base.jsp" %>
 <!-- Required meta tags -->
@@ -20,7 +21,7 @@
 		<h3 class="text-center mb-5">Log In As User</h3>
 		<div class="card" style="width: 600px;
     margin-left: 250px;">
-		<form action="login-user" method="post">
+		<form action="login-user/${u.uid }" method="post">
 			<div class="form-group mt-5 ml-5 mr-5">
 				<label for="exampleInputEmail1">Email</label> <input type="email"
 					class="form-control" id="exampleInputEmail1"

@@ -24,24 +24,27 @@
 						<a class="dropdown-item" href="#">Communication</a>
 					</div></li>
 			</ul>
+			
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="search"
 					style="width: 600px;" placeholder="Search" aria-label="Search">
 				<button class="btn btn-outline-primary my-2 my-sm-0 ml-2"
 					type="submit">Search</button>
 			</form>
-			<form action="log-out" method="post">
-				<button class="btn btn-outline-dark ml-5">LogOut</button>
-			</form>
-			<d:forEach items="${users }" var="us">
-			<tr>
-			<th scope="row">${us.uid }</th>
-			<td>${us.email }</td>
-			</tr>
-			</d:forEach>
-			
-	
 		</div>
+		<div>
+		<ul class="navbar-nav mr-auto">
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">User Name </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="myprofile/${us.uid }">My Profile</a> <a
+							class="dropdown-item" href="log-out">Log Out</a>
+					</div></li>
+			</ul>
+		</div>
+
 	</nav>
 
 	<div class="container mt-3">

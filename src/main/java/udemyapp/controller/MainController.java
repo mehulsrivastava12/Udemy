@@ -18,7 +18,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import udemyapp.dao.CourseDao;
 import udemyapp.dao.ILoginDao;
 import udemyapp.dao.InstructorDao;
-import udemyapp.dao.UdemyDao;
+import udemyapp.dao.UserDao;
 import udemyapp.model.Course;
 import udemyapp.model.Instructor;
 import udemyapp.model.User;
@@ -27,7 +27,7 @@ import udemyapp.model.User;
 public class MainController {
 
 	@Autowired
-	private UdemyDao udemyDao;
+	private UserDao userDao;
 	@Autowired
 	private InstructorDao instructorDao;
 	@Autowired
@@ -50,13 +50,13 @@ public class MainController {
 	
 	@RequestMapping("/log-in")
 	public String logIn(Model mo) {
-		mo.addAttribute("title","Index");
+		mo.addAttribute("title","LogIn");
 		return "login";
 	}
 	
 	@RequestMapping("/log-out")
 	public String logOut(Model mo) {
-		mo.addAttribute("title","LogIn");
+		mo.addAttribute("title","Index");
 		List<Course> courses = courseDao.getAllCourse();
 		mo.addAttribute("courses",courses);
 		return "index";
@@ -69,7 +69,10 @@ public class MainController {
 	}
 	
 	@RequestMapping("/login-user")
-	public String loginUser() {
+	public String loginUser(Model mod) {
+		mod.addAttribute("title","Home");
+		List<Course> courses = courseDao.getAllCourse();
+		mod.addAttribute("courses",courses);
 		return "home";
 	}
 	
@@ -85,13 +88,11 @@ public class MainController {
 		return "login_instructor";
 	}
 	
-	@RequestMapping("/my-profile")
+	@RequestMapping("/myprofile")
 	public String myProfile(Model model) {
 		model.addAttribute("title","MyProfile");
 		return "myprofile";
 	}
-	
-	
 	
 	@RequestMapping("/courses-Data")
 	public String coursesdata(Model model) {
@@ -107,7 +108,7 @@ public class MainController {
 	
 	@RequestMapping(value="/signup-user",method=RequestMethod.POST)
 	public RedirectView handleUser(@ModelAttribute User user,HttpServletRequest request) {
-		udemyDao.createUser(user);
+		userDao.createUser(user);
 		RedirectView redirectView = new RedirectView();
 		redirectView.setUrl(request.getContextPath()+"/log-in");
 		return redirectView;
@@ -129,13 +130,15 @@ public class MainController {
 		return redirectView;
 	} 
 	
-	@PostMapping("/login-user")
-	public String checkUser(@RequestParam("email") String email,@RequestParam("password") String password,Model mod) {
+	@PostMapping("/login-user/{userId}")
+	public String checkUser(@RequestParam("email") String email,@RequestParam("password") String password,@PathVariable("userId") int uid,Model mod) {
 		boolean loginFlag=loginDao.validateUser(email, password);
 		if(loginFlag==true) {
 			mod.addAttribute("title","Home");
 			List<Course> courses = courseDao.getAllCourse();
 			mod.addAttribute("courses",courses);
+			User user=this.userDao.getUser(uid);
+			mod.addAttribute("user",user);
 			return "home";
 		}
 		else {

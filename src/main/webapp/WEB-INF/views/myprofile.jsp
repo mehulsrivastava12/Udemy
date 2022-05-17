@@ -1,34 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!doctype html>
-<html lang="en">
-<%@taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
 <head>
+<meta charset="UTF-8">
 <%@ include file="./base.jsp"%>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
 </head>
-<body>
-	<div class="container mt-5">
-		<h3 class="text-center mb-5">My Profile</h3>
-		<div class="card" style="width: 600px; margin-left: 250px;">
-			<form action="#" method="post">
-							<input type="text" value="${user.id }" name="id" />
+<body style="background-color: grey;">
+	<div class="container mt-3">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 card bg-light">
+				<h1 class="text-center mb-3">My Profile</h1>
+				<h1>${user.uid }</h1>
+				<form action="#" method="post">
 					<div class="form-group">
-						<label for="name">Product Name</label><input type="text"
-							class="form-control" id="name" area-describedby="emailhelp"
-							name="name" placeholder="Enter the product name here"
+						<label for="name">First Name</label><input type="text"
+							class="form-control" id="name"
+							name="name" placeholder="First Name" value="${user.firstName }">
+					</div>
+					<div class="form-group">
+						<label for="name">Last Name</label><input type="text"
+							class="form-control" id="name" name="name"
+							placeholder="Last Name" value="${user.lastName }">
+					</div>
+					<div class="form-group">
+						<label for="price">Email</label> <input type="text"
+							placeholder="Email" name="price" class="form-control" id="price"
 							value="${user.email }">
 					</div>
-			</form>
+					<div class="form-group">
+						<label for="price">Date Of Birth</label> <input type="text"
+							placeholder="Date Of Birth" name="price" class="form-control"
+							id="price" value="${user.dob }">
+					</div>
+
+					<div class="container text-center">
+						<a href="${pageContext.request.contextPath }/login-user"
+							class="btn btn-outline-danger mb-5">Back</a>
+						<button type="submit" class="btn btn-primary mb-5">Update</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 </body>
