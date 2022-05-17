@@ -43,19 +43,19 @@ public class MainController {
 	}
 	
 	@RequestMapping("/sign-up")
-	public String login(Model m) {
+	public String signup(Model m) {
 		m.addAttribute("title","SignUp");
 		return "signup";
 	}
 	
 	@RequestMapping("/log-in")
-	public String logOut(Model mo) {
+	public String logIn(Model mo) {
 		mo.addAttribute("title","Index");
 		return "login";
 	}
 	
 	@RequestMapping("/log-out")
-	public String signUp(Model mo) {
+	public String logOut(Model mo) {
 		mo.addAttribute("title","LogIn");
 		List<Course> courses = courseDao.getAllCourse();
 		mo.addAttribute("courses",courses);
