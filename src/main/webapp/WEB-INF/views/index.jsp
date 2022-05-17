@@ -49,7 +49,7 @@
     <h5 class="card-title">${p.title }</h5>
     <p class="card-text">${p.description }</p>
     <p class="card-text font-weight-bold">${p.instructor}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-primary">Go To Course</a>
     
   </div>
 </div>
