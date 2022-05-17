@@ -154,10 +154,4 @@ public class MainController {
 			return "login_instructor";
 		}
 	}
-	
-	@RequestMapping("/update/{productId}")
-	public String updateForm() {
-
-		return "update_form";
-	}
 }
