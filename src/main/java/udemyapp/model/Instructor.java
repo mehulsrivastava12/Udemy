@@ -1,10 +1,11 @@
 package udemyapp.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 @Entity
 public class Instructor {
 
@@ -16,6 +17,8 @@ public class Instructor {
 	private String dob;
 	private String email;
 	private String password;
+	private List<Course> courses;
+	private List<User> users;
 	public int getUid() {
 		return uid;
 	}
@@ -52,7 +55,20 @@ public class Instructor {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Instructor(int uid, String firstName, String lastName, String dob, String email, String password) {
+	public List<Course> getCourses() {
+		return courses;
+	}
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
+	public List<User> getUsers() {
+		return users;
+	}
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+	public Instructor(int uid, String firstName, String lastName, String dob, String email, String password,
+			List<udemyapp.model.Course> courses, List<udemyapp.model.User> users) {
 		super();
 		this.uid = uid;
 		this.firstName = firstName;
@@ -60,16 +76,11 @@ public class Instructor {
 		this.dob = dob;
 		this.email = email;
 		this.password = password;
+		this.courses = courses;
+		this.users = users;
 	}
 	public Instructor() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	@Override
-	public String toString() {
-		return "Instructor [uid=" + uid + ", firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob
-				+ ", email=" + email + ", password=" + password + "]";
-	}
-	
 	
 }
