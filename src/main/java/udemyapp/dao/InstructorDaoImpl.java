@@ -36,7 +36,7 @@ public class InstructorDaoImpl implements InstructorDao{
 		return this.hibernateTemplate.load(Instructor.class, uid);
 	}
 
-	public List<Course> searchCourse(String title) {
+	public List<Course> searchAll(String title) {
 		// TODO Auto-generated method stub
 		return null;
 	}
