@@ -42,7 +42,6 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	public List<Course> getMyCourse(int uid) {
-		
 		return null;
 	}
 

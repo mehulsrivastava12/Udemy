@@ -32,7 +32,7 @@ public class MainController {
 	
 	@RequestMapping("/")
 	public String index(Model m) {
-		List<Course> courses = courseDao.getAllCourse();
+		List<Course> courses = courseDao.getAll();
 		m.addAttribute("courses",courses);
 		return "index";
 	}
@@ -52,7 +52,7 @@ public class MainController {
 	@RequestMapping("/log-out")
 	public String logOut(Model mo) {
 		mo.addAttribute("title","Index");
-		List<Course> courses = courseDao.getAllCourse();
+		List<Course> courses = courseDao.getAll();
 		mo.addAttribute("courses",courses);
 		return "index";
 	}
@@ -66,7 +66,7 @@ public class MainController {
 	@RequestMapping("/login-user")
 	public String loginUser(Model mod) {
 		mod.addAttribute("title","Home");
-		List<Course> courses = courseDao.getAllCourse();
+		List<Course> courses = courseDao.getAll();
 		mod.addAttribute("courses",courses);
 		return "home";
 	}
@@ -128,7 +128,7 @@ public class MainController {
 	@PostMapping("/login-user")
 	public String home(Model mod) {
 			mod.addAttribute("title","Home");
-			List<Course> courses = courseDao.getAllCourse();
+			List<Course> courses = courseDao.getAll();
 			mod.addAttribute("courses",courses);
 			return "home";
 		}
