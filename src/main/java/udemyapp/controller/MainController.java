@@ -8,17 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
-import udemyapp.dao.CourseDao;
-import udemyapp.dao.ILoginDao;
-import udemyapp.dao.InstructorDao;
-import udemyapp.dao.UserDao;
+import udemyapp.dao.CourseDaoImpl;
+import udemyapp.dao.InstructorDaoImpl;
+import udemyapp.dao.UserDaoImpl;
 import udemyapp.model.Course;
 import udemyapp.model.Instructor;
 import udemyapp.model.User;
@@ -27,13 +24,11 @@ import udemyapp.model.User;
 public class MainController {
 
 	@Autowired
-	private UserDao userDao;
+	private UserDaoImpl userDao;
 	@Autowired
-	private InstructorDao instructorDao;
+	private InstructorDaoImpl instructorDao;
 	@Autowired
-	private CourseDao courseDao;
-	@Autowired
-	ILoginDao loginDao;
+	private CourseDaoImpl courseDao;
 	
 	@RequestMapping("/")
 	public String index(Model m) {
@@ -130,31 +125,16 @@ public class MainController {
 		return redirectView;
 	} 
 	
-	@PostMapping("/login-user/{userId}")
-	public String checkUser(@RequestParam("email") String email,@RequestParam("password") String password,@PathVariable("userId") int uid,Model mod) {
-		boolean loginFlag=loginDao.validateUser(email, password);
-		if(loginFlag==true) {
+	@PostMapping("/login-user")
+	public String home(Model mod) {
 			mod.addAttribute("title","Home");
 			List<Course> courses = courseDao.getAllCourse();
 			mod.addAttribute("courses",courses);
-			User user=this.userDao.getUser(uid);
-			mod.addAttribute("user",user);
 			return "home";
 		}
-		else {
-			return "login";
-		}
-	}
 	
 	@PostMapping("/courses-Data")
-	public String checkInstructor(@RequestParam("email") String email,@RequestParam("password") String password,Model mod) {
-		boolean loginFlag1=loginDao.validateInstructor(email, password);
-		if(loginFlag1==true) {
-			mod.addAttribute("title","Courses");
-			return "coursesData";
-		}
-		else {
-			return "login_instructor";
-		}
+	public String courseForm(Model mod) {
+		return "coursesData";
 	}
 }

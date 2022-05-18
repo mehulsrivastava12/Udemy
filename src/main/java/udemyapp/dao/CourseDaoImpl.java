@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import udemyapp.model.Course;
 
 @Component
-public class CourseDao {
+public class CourseDaoImpl implements CoursesDao {
 
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
