@@ -35,4 +35,24 @@ public class UserDaoImpl implements UserDao{
 	public User getUser(int uid) {
 		return this.hibernateTemplate.load(User.class, uid);
 	}
+
+	public List<Course> getAllCourse() {
+		List<Course> courses=this.hibernateTemplate.loadAll(Course.class);
+		return courses;
+	}
+
+	public List<Course> getMyCourse(int uid) {
+		
+		return null;
+	}
+
+	public List<Course> searchCourse(String title) {
+
+		return null;
+	}
+
+	public List<Course> searchInstructorCourse(String instructor) {
+
+		return null;
+	}
 }

@@ -20,7 +20,7 @@ public class CourseDaoImpl implements CoursesDao {
 		this.hibernateTemplate.saveOrUpdate(course);
 	}
 	
-	public List<Course> getAllCourse(){
+	public List<Course> getAll(){
 		List<Course> courses=this.hibernateTemplate.loadAll(Course.class);
 		return courses;
 	}

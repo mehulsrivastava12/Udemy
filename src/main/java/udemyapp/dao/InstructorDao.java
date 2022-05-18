@@ -4,7 +4,6 @@ import java.util.List;
 
 import udemyapp.model.Course;
 import udemyapp.model.Instructor;
-import udemyapp.model.User;
 
 public interface InstructorDao {
 
@@ -15,5 +14,5 @@ public interface InstructorDao {
 	public List<Course> searchCourse(String title);
 	public List<Course> getInstructorCourse(String email);
 	public void addCourse(Course course);
-	public void deleteCourse(int cid);
+	public void removeCourse(int cid);
 }

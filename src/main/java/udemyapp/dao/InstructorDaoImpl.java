@@ -7,6 +7,7 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import udemyapp.model.Course;
 import udemyapp.model.Instructor;
 
 @Component
@@ -33,5 +34,25 @@ public class InstructorDaoImpl implements InstructorDao{
 	
 	public Instructor getInstructor(int uid) {
 		return this.hibernateTemplate.load(Instructor.class, uid);
+	}
+
+	public List<Course> searchCourse(String title) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Course> getInstructorCourse(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void addCourse(Course course) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void removeCourse(int cid) {
+		// TODO Auto-generated method stub
+		
 	}
 }
