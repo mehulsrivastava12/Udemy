@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import udemyapp.model.Course;
 import udemyapp.model.Instructor;
 import udemyapp.model.User;
+import udemyapp.model.UserEnrollment;
 
 @Component
 public class UserDaoImpl implements UserDao{
@@ -41,10 +42,10 @@ public class UserDaoImpl implements UserDao{
 		return courses;
 	}
 
-	public List<Course> getMyCourse(int uid) {
-		String sql="select * from Course c JOIN UserEnrollment e ON c.cid=e.courseId AND e.userId=?";
-		RowMapper<Course> rowMapper=new CourseRowMapperImpl();
-		List<Course> myCourse=this.jdbcTemplate.query(sql,rowMapper,uid);
+	public List<UserEnrollment> getMyCourse(int uid) {
+		String sql="select * from UserEnrollment where userId=?";
+		RowMapper<UserEnrollment> rowMapper=new EnrollmentRowMapper();
+		List<UserEnrollment> myCourse=this.jdbcTemplate.query(sql,rowMapper,uid);
 		return myCourse;
 	}
 
