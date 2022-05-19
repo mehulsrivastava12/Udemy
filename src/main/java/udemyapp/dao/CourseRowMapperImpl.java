@@ -15,6 +15,7 @@ public class CourseRowMapperImpl implements RowMapper<Course> {
 		course.setDescription(rs.getString("description"));
 		course.setPrice(rs.getLong("price"));
 		course.setLink(rs.getString("link"));
+		course.setId(rs.getInt("id"));
 		return course;
 	}
 

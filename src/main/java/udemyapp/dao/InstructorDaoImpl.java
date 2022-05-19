@@ -3,6 +3,8 @@ package udemyapp.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,8 @@ public class InstructorDaoImpl implements InstructorDao{
 
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 	
 	@Transactional
 	public void createInstructor(Instructor instructor) {
@@ -22,23 +26,20 @@ public class InstructorDaoImpl implements InstructorDao{
 	}
 	
 	@Transactional
-	public void deleteInstructor(int uid) {
-		Instructor i = this.hibernateTemplate.load(Instructor.class, uid);
+	public void deleteInstructor(int id) {
+		Instructor i = this.hibernateTemplate.load(Instructor.class, id);
 		this.hibernateTemplate.delete(i);
 	}
 	
-	public Instructor getInstructor(int uid) {
-		return this.hibernateTemplate.load(Instructor.class, uid);
-	}
-
-	public List<Course> searchAll(String title) {
-		List<Course> Search =this.hibernateTemplate.loadAll(Course.class); 
-		return Search;
+	public Instructor getInstructor(int id) {
+		return this.hibernateTemplate.load(Instructor.class, id);
 	}
 
 	public List<Course> getInstructorCourse(int id) {
-		List<Course> allCourse=this.hibernateTemplate.loadAll(Course.class);
-		return allCourse;
+		String sql="select * from Course where id=?";
+		RowMapper<Course> rowMapper=new CourseRowMapperImpl();
+		List<Course> instructorCourse=this.jdbcTemplate.query(sql,rowMapper,id);
+		return instructorCourse;
 	}
 
 	@Transactional

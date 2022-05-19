@@ -4,14 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.spring.jdbc.dao.RowMapperImpl;
-import com.spring.jdbc.entities.Student;
-
 import udemyapp.model.Course;
+import udemyapp.model.Instructor;
 import udemyapp.model.User;
 
 @Component
@@ -43,20 +42,23 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	public List<Course> getMyCourse(int uid) {
-		String sql="select * from Course wehre cid=?";
-		List<Course> courses = this.jdbcTemplate.query(sql,new CourseRowMapperImpl());
-		return courses;
+		String sql="select * from Course c JOIN UserEnrollment e ON c.cid=e.courseId AND e.userId=?";
+		RowMapper<Course> rowMapper=new CourseRowMapperImpl();
+		List<Course> myCourse=this.jdbcTemplate.query(sql,rowMapper,uid);
+		return myCourse;
 	}
 
 	public List<Course> searchCourse(String title) {
 		String sql="select * from Course where title=?";
-		List<Course> allCourses=this.jdbcTemplate.query(sql,new CourseRowMapperImpl());
+		RowMapper<Course> rowMapper=new CourseRowMapperImpl();
+		List<Course> allCourses=this.jdbcTemplate.query(sql,rowMapper,title);
 		return allCourses;
 	}
 
-	public List<Course> searchInstructorCourse(String instructor) {
-		String sql="select * from Course";
-		List<Course> instructorCourses=this.jdbcTemplate.query(sql,new CourseRowMapperImpl());
-		return instructorCourses;
+	public List<Instructor> searchInstructor(String instructor) {
+		String sql="select firstName,lastname from Instructor where firstName=?";
+		RowMapper<Instructor> rowMapper=new InstructorRowMapperImpl();
+		List<Instructor> inst=this.jdbcTemplate.query(sql,rowMapper,sql);
+		return inst;
 	}
 }
