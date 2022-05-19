@@ -1,7 +1,5 @@
 package udemyapp.dao;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
@@ -10,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import udemyapp.model.Course;
 
 @Component
-public class CourseDaoImpl implements CoursesDao {
+public class CourseDaoImpl implements CourseDao {
 
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
@@ -18,11 +16,6 @@ public class CourseDaoImpl implements CoursesDao {
 	@Transactional
 	public void createCourse(Course course) {
 		this.hibernateTemplate.saveOrUpdate(course);
-	}
-	
-	public List<Course> getAll(){
-		List<Course> courses=this.hibernateTemplate.loadAll(Course.class);
-		return courses;
 	}
 	
 	@Transactional

@@ -1,6 +1,6 @@
 package udemyapp.model;
 
-import java.util.List;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,19 +11,17 @@ public class Instructor {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int uid;
+	private int id;
 	private String firstName;
 	private String lastName;
 	private String dob;
 	private String email;
 	private String password;
-	private List<Course> courses;
-	private List<User> users;
-	public int getUid() {
-		return uid;
+	public int getId() {
+		return id;
 	}
-	public void setUid(int uid) {
-		this.uid = uid;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -55,32 +53,22 @@ public class Instructor {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public List<Course> getCourses() {
-		return courses;
-	}
-	public void setCourses(List<Course> courses) {
-		this.courses = courses;
-	}
-	public List<User> getUsers() {
-		return users;
-	}
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
-	public Instructor(int uid, String firstName, String lastName, String dob, String email, String password,
-			List<udemyapp.model.Course> courses, List<udemyapp.model.User> users) {
+	public Instructor(int id, String firstName, String lastName, String dob, String email, String password) {
 		super();
-		this.uid = uid;
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dob = dob;
 		this.email = email;
 		this.password = password;
-		this.courses = courses;
-		this.users = users;
 	}
 	public Instructor() {
 		super();
+	}
+	@Override
+	public String toString() {
+		return "Instructor [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob
+				+ ", email=" + email + ", password=" + password + "]";
 	}
 	
 }

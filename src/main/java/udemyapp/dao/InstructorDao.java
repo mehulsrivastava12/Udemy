@@ -9,10 +9,8 @@ public interface InstructorDao {
 
 	public void createInstructor(Instructor instructor);
 	public void deleteInstructor(int id);
-	public Instructor getInstructor(int id);
-	public List<Instructor> getAllInstructor();
-	public List<Course> searchAll(String title);
-	public List<Course> getInstructorCourse(String email);
+	public Instructor getInstructor(int id);   
+	public List<Course> getInstructorCourse(int id);
 	public void addCourse(Course course);
 	public void removeCourse(int cid);
 }

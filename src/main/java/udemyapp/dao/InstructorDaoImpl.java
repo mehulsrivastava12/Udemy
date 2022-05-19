@@ -21,11 +21,6 @@ public class InstructorDaoImpl implements InstructorDao{
 		this.hibernateTemplate.saveOrUpdate(instructor);
 	}
 	
-	public List<Instructor> getAllInstructor(){
-		List<Instructor> users=this.hibernateTemplate.loadAll(Instructor.class);
-		return users;
-	}
-	
 	@Transactional
 	public void deleteInstructor(int uid) {
 		Instructor i = this.hibernateTemplate.load(Instructor.class, uid);
@@ -37,22 +32,24 @@ public class InstructorDaoImpl implements InstructorDao{
 	}
 
 	public List<Course> searchAll(String title) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Course> Search =this.hibernateTemplate.loadAll(Course.class); 
+		return Search;
 	}
 
-	public List<Course> getInstructorCourse(String email) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Course> getInstructorCourse(int id) {
+		List<Course> allCourse=this.hibernateTemplate.loadAll(Course.class);
+		return allCourse;
 	}
 
+	@Transactional
 	public void addCourse(Course course) {
-		// TODO Auto-generated method stub
-		
+		this.hibernateTemplate.saveOrUpdate(course);
 	}
 
+	@Transactional
 	public void removeCourse(int cid) {
-		// TODO Auto-generated method stub
-		
+		Course c=this.hibernateTemplate.load(Course.class, cid);
+		this.hibernateTemplate.delete(c);
 	}
+
 }
