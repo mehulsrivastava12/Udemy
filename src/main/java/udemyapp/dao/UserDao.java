@@ -9,6 +9,7 @@ import udemyapp.model.UserEnrollment;
 public interface UserDao {
 
 	public void createUser(User user);
+	public void Enroll(UserEnrollment userEnrollment);
 	public void deleteUser(int id);
 	public User getUser(int id);
 	public List<Course> getCourses();

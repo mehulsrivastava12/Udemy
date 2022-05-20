@@ -1,15 +1,13 @@
 package udemyapp.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Course {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	private int cid;
 	private String title;
 	private String description;
@@ -64,4 +62,10 @@ public class Course {
 	public Course() {
 		super();
 	}
+	@Override
+	public String toString() {
+		return "Course [cid=" + cid + ", title=" + title + ", description=" + description + ", link=" + link
+				+ ", price=" + price + ", id=" + id + "]";
+	}
+	
 }

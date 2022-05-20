@@ -28,13 +28,18 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	@Transactional
+	public void Enroll(UserEnrollment userEnrollment) {
+		this.hibernateTemplate.saveOrUpdate(userEnrollment);
+	}
+	
+	@Transactional
 	public void deleteUser(int uid) {
 		User u = this.hibernateTemplate.load(User.class, uid);
 		this.hibernateTemplate.delete(u);
 	}
 	
 	public User getUser(int uid) {
-		return this.hibernateTemplate.load(User.class, uid);
+		return this.hibernateTemplate.get(User.class, uid);
 	}
 
 	public List<Course> getCourses() {
@@ -57,9 +62,9 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	public List<Instructor> searchInstructor(String instructor) {
-		String sql="select firstName,lastname from Instructor where firstName=?";
+		String sql="select * from Instructor where firstName=?";
 		RowMapper<Instructor> rowMapper=new InstructorRowMapperImpl();
-		List<Instructor> inst=this.jdbcTemplate.query(sql,rowMapper,sql);
+		List<Instructor> inst=this.jdbcTemplate.query(sql,rowMapper,instructor);
 		return inst;
 	}
 }

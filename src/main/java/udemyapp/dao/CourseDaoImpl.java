@@ -25,6 +25,6 @@ public class CourseDaoImpl implements CourseDao {
 	}
 	
 	public Course getCourse(int cid) {
-		return this.hibernateTemplate.load(Course.class, cid);
+		return this.hibernateTemplate.get(Course.class, cid);
 	}
 }

@@ -32,7 +32,7 @@ public class InstructorDaoImpl implements InstructorDao{
 	}
 	
 	public Instructor getInstructor(int id) {
-		return this.hibernateTemplate.load(Instructor.class, id);
+		return this.hibernateTemplate.get(Instructor.class, id);
 	}
 
 	public List<Course> getInstructorCourse(int id) {
