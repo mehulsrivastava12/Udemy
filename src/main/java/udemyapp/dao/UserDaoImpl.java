@@ -28,7 +28,7 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	@Transactional
-	public void Enroll(UserEnrollment userEnrollment) {
+	public void enroll(UserEnrollment userEnrollment) {
 		this.hibernateTemplate.saveOrUpdate(userEnrollment);
 	}
 	

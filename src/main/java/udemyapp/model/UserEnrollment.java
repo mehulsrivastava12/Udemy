@@ -1,13 +1,15 @@
 package udemyapp.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class UserEnrollment {
 
 	@Id
-	
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int enrollmentId;
 	private int userId;
 	private int courseId;

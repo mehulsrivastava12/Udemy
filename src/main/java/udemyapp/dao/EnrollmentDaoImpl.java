@@ -14,19 +14,7 @@ public class EnrollmentDaoImpl implements EnrollmentDao{
 	private HibernateTemplate hibernateTemplate;
 	
 	@Transactional
-	public void Enroll(UserEnrollment userEnrollment) {
+	public void enroll(UserEnrollment userEnrollment) {
 		this.hibernateTemplate.saveOrUpdate(userEnrollment);
 	}
-
-	@Transactional
-	public void deleteUser(int enrollmentId) {
-		UserEnrollment eid = this.hibernateTemplate.load(UserEnrollment.class, enrollmentId);
-		this.hibernateTemplate.delete(eid);
-	}
-
-	public UserEnrollment getUser(int enrollmentId) {
-		return this.hibernateTemplate.load(UserEnrollment.class, enrollmentId);
-	}
-
-
 }
