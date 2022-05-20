@@ -19,10 +19,15 @@ public class App {
 	public static void main(String [] args) {
 		System.out.println("Program Started.......!!!");
 		ApplicationContext context=new ClassPathXmlApplicationContext("udemyapp/main/config.xml");
+		
 		InstructorDao instructorDao = context.getBean(InstructorDao.class);
+		
 		UserDao userDao = context.getBean(UserDao.class);
+		
 		CourseDao courseDao = context.getBean(CourseDao.class);
+		
 		EnrollmentDao enrollmentDao=context.getBean(EnrollmentDao.class);
+		
 		User user=new User(1,"Mehul","Srivastava","12/12/2000","mhsri.1212@gmail.com","mehul");
 		userDao.createUser(user);
 		
