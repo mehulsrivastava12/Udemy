@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import udemyapp.dao.UserDaoImpl;
 import udemyapp.model.Course;
+import udemyapp.model.Instructor;
 import udemyapp.model.User;
 import udemyapp.model.UserEnrollment;
 
@@ -35,15 +36,41 @@ public class UserController {
 	@RequestMapping("/mycourses/{userId}")
 	public String myCourse(@PathVariable("userId") int userId,Model model) {
 		List<UserEnrollment> myCourse=userDao.getMyCourse(userId); 
-		model.addAttribute(myCourse);
+		model.addAttribute("myCourse",myCourse);
 		return "myCourse";
 	}
 	
 	@RequestMapping("/allCourses")
 	public String allCourse(Model model) {
 		List<Course> allCourses=userDao.getCourses(); 
-		model.addAttribute(allCourses);
+		model.addAttribute("allCourse",allCourses);
 		return "allCourse";
 	}
 	
+	@RequestMapping("/search/{title}")
+	public String search(@PathVariable("title") String title,Model model) { 
+		List<Course> searchCourse=userDao.searchCourse(title);
+		model.addAttribute("searchCourse",searchCourse);
+		return "searchCourse";
+	}
+	
+	@RequestMapping("/searchInstructor/{instructor}")
+	public String searchInstructor(@PathVariable("instructor") String firstname,Model model) {
+		List<Instructor> searchInstructor=userDao.searchInstructor(firstname);
+		model.addAttribute("searchInstructor",searchInstructor);
+		return "searchInstructor";
+	}
+	
+	@RequestMapping("/delete/{userId}")
+	public String deleteUserAccount(@PathVariable("userId") int userId,Model model) {
+		this.userDao.deleteUser(userId);
+		return "index";
+	}
+
+	@RequestMapping("/enroll")
+	public String enrollUser(@PathVariable("userId") int userId,@PathVariable("courseId") int courseId) {
+		UserEnrollment userEnrollment=new UserEnrollment(userId,courseId,userEnrollment.getDate());
+		this.userDao.enroll(userEnrollment);
+		return "myCourse";
+	}
 }
