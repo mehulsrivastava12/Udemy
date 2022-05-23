@@ -5,14 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import udemyapp.dao.EnrollmentDaoImpl;
+import udemyapp.dao.EnrollmentDao;
 import udemyapp.model.UserEnrollment;
 
 @Controller
 public class EnrollmentController {
 
 	@Autowired
-	private EnrollmentDaoImpl enrollmentDao;
+	private EnrollmentDao enrollmentDao;
 	
 	@RequestMapping("/enroll")
 	public String enrollUser(@ModelAttribute UserEnrollment userEnrollment) {

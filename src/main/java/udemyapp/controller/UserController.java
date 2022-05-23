@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import udemyapp.dao.UserDaoImpl;
+import udemyapp.dao.UserDao;
 import udemyapp.model.Course;
 import udemyapp.model.Instructor;
 import udemyapp.model.User;
@@ -18,7 +18,7 @@ import udemyapp.model.UserEnrollment;
 @Controller
 public class UserController {
 	@Autowired
-	private UserDaoImpl userDao; 
+	private UserDao userDao; 
 	
 	@RequestMapping("/register")
 	public String addUser(@ModelAttribute User user) {
@@ -54,7 +54,7 @@ public class UserController {
 		return "searchCourse";
 	}
 	
-	@RequestMapping("/searchInstructor/{instructor}")
+	@RequestMapping("/searchinstructor/{instructor}")
 	public String searchInstructor(@PathVariable("instructor") String firstname,Model model) {
 		List<Instructor> searchInstructor=userDao.searchInstructor(firstname);
 		model.addAttribute("searchInstructor",searchInstructor);

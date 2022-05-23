@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import udemyapp.dao.CourseDaoImpl;
+import udemyapp.dao.CourseDao;
 import udemyapp.model.Course;
 
 @Controller
 public class CourseController {
 	
 	@Autowired
-	private CourseDaoImpl courseDao;
+	private CourseDao courseDao;
 	
 	@RequestMapping("/course/{courseId}")
 	public String getCourses(@PathVariable("courseId") int courseId,Model model) {
@@ -23,13 +23,13 @@ public class CourseController {
 		return "course";
 	}
 	
-	@RequestMapping("/createCourse")
+	@RequestMapping("/createcourse")
 	public String addCourse(@ModelAttribute Course course) {
 		this.courseDao.createCourse(course);
 		return "instructorCourse";
 	}
 	
-	@RequestMapping("/deleteCourse/{courseId}")
+	@RequestMapping("/deletecourse/{courseId}")
 	public String removeCourse(@PathVariable("courseId") int courseId,Model model) {
 		this.courseDao.deleteCourse(courseId);
 		return "instructorCourses";
