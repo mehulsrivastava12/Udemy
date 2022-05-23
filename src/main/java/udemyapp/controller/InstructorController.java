@@ -44,16 +44,4 @@ public class InstructorController {
 		model.addAttribute("instructorCourse",instructorCourse);
 		return "instrcutorCourse";
 	}
-	
-	@RequestMapping("/createCourse")
-	public String createCourse(@ModelAttribute Course course) {
-		this.instructorDao.addCourse(course);
-		return "instructorCourse";
-	}
-	
-	@RequestMapping("/deleteCourse/{courseId}")
-	public String deleteCourse(@PathVariable("courseId") int courseId,Model model) {
-		this.instructorDao.removeCourse(courseId);
-		return "instructorCourses";
-	}
 }

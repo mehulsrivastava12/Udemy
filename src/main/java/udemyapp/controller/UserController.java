@@ -62,15 +62,9 @@ public class UserController {
 	}
 	
 	@RequestMapping("/delete/{userId}")
-	public String deleteUserAccount(@PathVariable("userId") int userId,Model model) {
+	public String deleteUserAccount(@PathVariable("userId") int userId) {
 		this.userDao.deleteUser(userId);
 		return "index";
 	}
-
-	@RequestMapping("/enroll")
-	public String enrollUser(@PathVariable("userId") int userId,@PathVariable("courseId") int courseId) {
-		UserEnrollment userEnrollment=new UserEnrollment(userId,courseId,userEnrollment.getDate());
-		this.userDao.enroll(userEnrollment);
-		return "myCourse";
-	}
+	
 }
