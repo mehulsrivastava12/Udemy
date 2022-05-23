@@ -26,13 +26,13 @@ public class InstructorController {
 	}
 	
 	@RequestMapping("/deleteinstructor/{instructorId}")
-	public String deleteInstructorAccount(@PathVariable("instructorId") int instructorId,Model model) {
+	public String deleteInstructor(@PathVariable("instructorId") int instructorId,Model model) {
 		this.instructorDao.deleteInstructor(instructorId);
 		return "index";
 	}
 	
-	@RequestMapping("/getinstructordetails/{instructorId}")
-	public String getInstructorDetails(@PathVariable("instructorId") int instructorId,Model model) {
+	@RequestMapping("/getinstructor/{instructorId}")
+	public String getInstructor(@PathVariable("instructorId") int instructorId,Model model) {
 		Instructor getDetail=this.instructorDao.getInstructor(instructorId);
 		model.addAttribute("getInstructorDetail",getDetail);
 		return "getInstructorDetail";

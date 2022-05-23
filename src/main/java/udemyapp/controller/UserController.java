@@ -19,6 +19,7 @@ import udemyapp.model.UserEnrollment;
 public class UserController {
 	@Autowired
 	private UserDao userDao; 
+
 	
 	@RequestMapping("/register")
 	public String addUser(@ModelAttribute User user) {
@@ -43,15 +44,15 @@ public class UserController {
 	@RequestMapping("/allCourses")
 	public String allCourse(Model model) {
 		List<Course> allCourses=userDao.getCourses(); 
-		model.addAttribute("allCourse",allCourses);
-		return "allCourse";
+		model.addAttribute("allCourses",allCourses);
+		return "allCourses";
 	}
 	
 	@RequestMapping("/search/{title}")
 	public String search(@PathVariable("title") String title,Model model) { 
-		List<Course> searchCourse=userDao.searchCourse(title);
-		model.addAttribute("searchCourse",searchCourse);
-		return "searchCourse";
+		List<Course> searchCourses=userDao.searchCourse(title);
+		model.addAttribute("searchCourses",searchCourses);
+		return "searchCourses";
 	}
 	
 	@RequestMapping("/searchinstructor/{instructor}")
@@ -62,7 +63,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("/delete/{userId}")
-	public String deleteUserAccount(@PathVariable("userId") int userId) {
+	public String deleteUser(@PathVariable("userId") int userId) {
 		this.userDao.deleteUser(userId);
 		return "index";
 	}

@@ -52,6 +52,7 @@
 				<value>udemyapp.model.User</value>
 				<value>udemyapp.model.Instructor</value>
 				<value>udemyapp.model.Course</value>
+				<value>udemyapp.model.UserEnrollment</value>
 			</list>
 		</property>
 	</bean>
