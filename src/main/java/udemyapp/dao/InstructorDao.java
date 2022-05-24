@@ -13,4 +13,5 @@ public interface InstructorDao {
 	public List<Course> getInstructorCourse(int id);
 	public void addCourse(Course course);
 	public void removeCourse(int cid);
+	public int validateInstructor(String email,String password);
 }

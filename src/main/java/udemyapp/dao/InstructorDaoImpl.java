@@ -52,5 +52,16 @@ public class InstructorDaoImpl implements InstructorDao{
 		Course c=this.hibernateTemplate.load(Course.class, cid);
 		this.hibernateTemplate.delete(c);
 	}
+	
+	public int validateInstructor(String email,String password) {
+		int count=jdbcTemplate.queryForObject("select count(*) from Instructor where email=? and password=?",Integer.class,email,password);
+		int id=jdbcTemplate.queryForObject("select id from Instructor where email=? and password=?",Integer.class,email,password);
+		if(count==1) {
+			return id;
+		}
+		else {
+			return 0;
+		}
+	}
 
 }

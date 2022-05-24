@@ -22,7 +22,7 @@ public class InstructorController {
 	@RequestMapping("/instructorregister")
 	public String addInstructor(@ModelAttribute Instructor instructor) {
 		instructorDao.createInstructor(instructor);
-		return "insturctorLogin";
+		return "loginInstructor";
 	}
 	
 	@RequestMapping("/deleteinstructor/{instructorId}")
@@ -42,6 +42,6 @@ public class InstructorController {
 	public String instructorCourse(@PathVariable("instructorId") int instructorId,Model model) {
 		List<Course> instructorCourse=this.instructorDao.getInstructorCourse(instructorId);
 		model.addAttribute("instructorCourse",instructorCourse);
-		return "instrcutorCourse";
+		return "instructorCourse";
 	}
 }

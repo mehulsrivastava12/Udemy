@@ -14,9 +14,9 @@
 
 	<div>
 
-		<h3>Sign Up As User</h3>
+		<h3>Sign Up As Instructor</h3>
 		<div>
-		<form action="register" method="post">
+		<form action="instructorregister" method="post">
 			<div>
 				<label for="firstName">First Name</label> <input type="text"
 					id="firstName" aria-describedby="emailHelp"
@@ -49,12 +49,6 @@
 			<div>
 				<button type="submit">Sign Up</button>
 			</div>
-			
-			<div>
-			<span>SignUp As Instructor !!  
-				<a href="signupInstructor">SignUp As Instructor</a></span>
-			</div>
-
 		</form>
 		</div>
 

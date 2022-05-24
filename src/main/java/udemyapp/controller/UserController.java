@@ -41,8 +41,8 @@ public class UserController {
 		return "myCourse";
 	}
 	
-	@RequestMapping("/allCourses")
-	public String allCourse(Model model) {
+	@RequestMapping("/allCourses/{uid}")
+	public String allCourse(@PathVariable("uid") int uid,Model model) {
 		List<Course> allCourses=userDao.getCourses(); 
 		model.addAttribute("allCourses",allCourses);
 		return "allCourses";

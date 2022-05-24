@@ -67,4 +67,15 @@ public class UserDaoImpl implements UserDao{
 		List<Instructor> inst=this.jdbcTemplate.query(sql,rowMapper,instructor);
 		return inst;
 	}
+	
+	public int validateUser(String email,String password) {
+		int count=jdbcTemplate.queryForObject("select count(*) from User where email=? and password=?",Integer.class,email,password);
+		int uid=jdbcTemplate.queryForObject("select uid from User where email=? and password=?",Integer.class,email,password);
+		if(count==1) {
+			return uid;
+		}
+		else {
+			return 0;
+		}
+	}
 }

@@ -14,7 +14,7 @@
 	<div>
 		<h3>Log In As User</h3>
 		<div>
-		<form action="userdetail" method="post">
+		<form action="userhome" method="post">
 			<div>
 				<label for="exampleInputEmail1">Email</label> <input type="email"
 					id="exampleInputEmail1"
@@ -32,12 +32,12 @@
 			</div>
 			<div>
 			<span>Don't Have A Account?  
-				<a href="sign-up">Sign Up</a></span>
+				<a href="signup">Sign Up</a></span>
 			</div>
 			
 			<div>
 			<span>Login As Instructor !!  
-				<a href="log-instructor">LogIn As Instructor</a></span>
+				<a href="loginInstructor">LogIn As Instructor</a></span>
 			</div>
 		</form>
 		</div>

@@ -16,4 +16,5 @@ public interface UserDao {
 	public List<UserEnrollment> getMyCourse(int userid);
 	public List<Course> searchCourse(String title);
 	public List<Instructor> searchInstructor(String instructor);
+	public int validateUser(String email,String password);
 }
