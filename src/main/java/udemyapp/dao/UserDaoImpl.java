@@ -64,17 +64,21 @@ public class UserDaoImpl implements UserDao{
 	public List<Instructor> searchInstructor(String instructor) {
 		String sql="select * from Instructor where firstName=?";
 		RowMapper<Instructor> rowMapper=new InstructorRowMapperImpl();
-		List<Instructor> inst=this.jdbcTemplate.query(sql,rowMapper,instructor);
-		return inst;
+		List<Instructor> searchInstructor=this.jdbcTemplate.query(sql,rowMapper,instructor);
+		return searchInstructor;
 	}
 	
 	public int validateUser(String email,String password) {
-		int count=jdbcTemplate.queryForObject("select count(*) from User where email=? and password=?",Integer.class,email,password);
-		int uid=jdbcTemplate.queryForObject("select uid from User where email=? and password=?",Integer.class,email,password);
-		if(count==1) {
-			return uid;
-		}
-		else {
+		try {
+			int count=jdbcTemplate.queryForObject("select count(*) from User where email=? and password=?",Integer.class,email,password);
+			int uid=jdbcTemplate.queryForObject("select uid from User where email=? and password=?",Integer.class,email,password);
+			if(count==1) {
+				return uid;
+			}
+			else {
+				return 0;
+			}
+		} catch (Exception e) {
 			return 0;
 		}
 	}

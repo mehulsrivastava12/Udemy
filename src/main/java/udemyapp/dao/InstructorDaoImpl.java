@@ -54,12 +54,16 @@ public class InstructorDaoImpl implements InstructorDao{
 	}
 	
 	public int validateInstructor(String email,String password) {
-		int count=jdbcTemplate.queryForObject("select count(*) from Instructor where email=? and password=?",Integer.class,email,password);
-		int id=jdbcTemplate.queryForObject("select id from Instructor where email=? and password=?",Integer.class,email,password);
-		if(count==1) {
-			return id;
-		}
-		else {
+		try {
+			int count=jdbcTemplate.queryForObject("select count(*) from Instructor where email=? and password=?",Integer.class,email,password);
+			int id=jdbcTemplate.queryForObject("select id from Instructor where email=? and password=?",Integer.class,email,password);
+			if(count==1) {
+				return id;
+			}
+			else {
+				return 0;
+			}
+		} catch (Exception e) {
 			return 0;
 		}
 	}

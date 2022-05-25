@@ -9,7 +9,7 @@
 	<div>
 		<h3>Fill The Details Of Courses</h3>
 		<div>
-			<form action="${pageContext.request.contextPath }/createcourse" method="post" class="bg-white">
+			<form action="${pageContext.request.contextPath }/createcourse/${id }" method="post" class="bg-white">
 				<div>
 					<label for="title">Course Title</label> <input type="text"
 						class="form-control" id="title" placeholder="Enter Course Title"

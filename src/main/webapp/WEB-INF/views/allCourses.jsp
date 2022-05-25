@@ -10,18 +10,18 @@
 			<table>
 				<thead>
 					<tr>
-						<th scope="col">Course Id</th>
-						<th scope="col">Course Title</th>
-						<th scope="col">Course Description</th>
-						<th scope="col">Course Link</th>
-						<th scope="col">Course Price</th>
-						<th scope="col">Instructor Id</th>
+						<th>Course Id</th>
+						<th>Course Title</th>
+						<th>Course Description</th>
+						<th>Course Link</th>
+						<th>Course Price</th>
+						<th>Instructor Id</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${allCourses }" var="p">
 						<tr>
-							<th scope="row">${p.cid }</th>
+							<th>${p.cid }</th>
 							<td>${p.title }</td>
 							<td>${p.description }</td>
 							<td><a href="${p.link }">Click Here</a></td>

@@ -58,8 +58,13 @@ public class UserController {
 	@RequestMapping("/searchinstructor/{instructor}")
 	public String searchInstructor(@PathVariable("instructor") String firstname,Model model) {
 		List<Instructor> searchInstructor=userDao.searchInstructor(firstname);
-		model.addAttribute("searchInstructor",searchInstructor);
-		return "searchInstructor";
+		if(searchInstructor.size()==0) {
+			return null;
+		}
+		else {
+			model.addAttribute("searchInstructor",searchInstructor);
+			return "searchInstructor";
+			}
 	}
 	
 	@RequestMapping("/delete/{userId}")

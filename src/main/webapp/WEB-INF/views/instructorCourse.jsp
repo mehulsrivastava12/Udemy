@@ -26,8 +26,8 @@
 					</thead>
 					<tbody>
 						<c:forEach items="${instructorCourse }" var="p">
-							<tr>
-								<th scope="row">${p.id }</th>
+						<tr>
+								<th scope="row">${p.cid }</th>
 								<td>${p.title }</td>
 								<td>${p.description }</td>
 								<td><a href="${p.link }">Click Here</a></td>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page isELIgnored="false"%>
+<%@ page import = "java.io.*,java.util.*, javax.servlet.*,java.text.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,20 +9,27 @@
 <title>User Enrollment</title>
 </head>
 <body>
+<%DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+String newDate = df.format(new Date()); 
+%>
 	<div>
-		<form action="" method="post">
+		<form action="${pageContext.request.contextPath }/enroll/${uid}"
+			method="post">
 			<div>
-				<label for="userId">UserID</label> <input type="text" id="userId"
-					placeholder="Enter userId" name="userId" value="${uid}" required>
-			</div>
-
-			<div>
-				<label for="courseId">CourseID</label> <input type="text"
-					id="courseId" placeholder="Enter courseId" name="courseId" value="${cid }" required>
+				<label for="userId">User Id</label> <input type="text" id="userId"
+					placeholder="Enter User Id" name="userId" value="${uid }" readOnly>
 			</div>
 			<div>
-				<label for="date">Date</label> <input type="date" id="date"
-					placeholder="Enter Date" name="Date" value="" required>
+				<label for="courseId">Course Id</label> <input type="text"
+					id="courseId" placeholder="Enter Id Of Course" name="courseId"
+					value="${cid }" readOnly>
+			</div>
+			<div>
+				<label for="date">Date</label> <input type="text" id="date"
+					placeholder="Enter Date" name="date" value="<%=newDate %>" readOnly>
+			</div>
+			<div>
+				<button type="submit">Submit</button>
 			</div>
 		</form>
 	</div>

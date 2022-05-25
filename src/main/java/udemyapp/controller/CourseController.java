@@ -23,10 +23,10 @@ public class CourseController {
 		return "course";
 	}
 	
-	@RequestMapping("/createcourse")
-	public String addCourse(@ModelAttribute Course course) {
+	@RequestMapping("/createcourse/{id}")
+	public String addCourse(@PathVariable("id") int id,@ModelAttribute Course course) {
 		this.courseDao.createCourse(course);
-		return "instructorCourse";
+		return "courseAdded";
 	}
 	
 	@RequestMapping("/deletecourse/{courseId}")

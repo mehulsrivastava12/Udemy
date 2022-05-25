@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
 import udemyapp.dao.InstructorDao;
 import udemyapp.dao.UserDao;
@@ -73,5 +74,13 @@ public class MainController {
 		else {
 			return "login";
 		}
+	}
+	
+	@RequestMapping("/searchinstructor")
+	private RedirectView searchinstructor(@RequestParam("instructor") String firstName,Model m) {
+		String url="searchinstructor/"+firstName;
+		RedirectView redirectView=new RedirectView();
+		redirectView.setUrl(url);
+		return redirectView;
 	}
 }
