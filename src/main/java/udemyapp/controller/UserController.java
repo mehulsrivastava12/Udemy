@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import udemyapp.dao.UserDao;
 import udemyapp.model.Course;
@@ -73,4 +74,16 @@ public class UserController {
 		return "index";
 	}
 	
+	@RequestMapping("/update/{uid}")
+	public String updateUser(@PathVariable("uid") int uid,Model model) {
+		User user=this.userDao.getUser(uid);
+		model.addAttribute("user",user);
+		return "update_form";
+	}
+	
+	@RequestMapping(value="update",method = RequestMethod.POST)
+	public String update(@ModelAttribute User user) {
+		userDao.createUser(user);
+		return "userDetail";
+	}
 }

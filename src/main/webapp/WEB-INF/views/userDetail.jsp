@@ -12,7 +12,6 @@
 	<table>
 		<thead>
 			<tr>
-				<th scope="col">User Id</th>
 				<th scope="col">First Name</th>
 				<th scope="col">Last Name</th>
 				<th scope="col">Date Of Birth</th>
@@ -21,7 +20,6 @@
 		</thead>
 		<tbody>
 			<tr>
-				<th scope="row">${user.uid }</th>
 				<td>${user.firstName }</td>
 				<td>${user.lastName }</td>
 				<td>${user.dob }</td>
@@ -29,5 +27,8 @@
 			</tr>
 		</tbody>
 	</table>
+	<div>
+		<button type="submit"><a href="${pageContext.request.contextPath }/update/${user.uid }">Click To Update Details</a></button>
+	</div>
 </body>
 </html>

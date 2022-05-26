@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao{
 		User u = this.hibernateTemplate.load(User.class, uid);
 		this.hibernateTemplate.delete(u);
 	}
-	
+
 	public User getUser(int uid) {
 		return this.hibernateTemplate.get(User.class, uid);
 	}
