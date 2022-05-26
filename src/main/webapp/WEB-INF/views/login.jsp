@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@page isELIgnored="false" %>
 <!doctype html>
 <html lang="en">
 <%@taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -29,6 +30,9 @@
 			
 			<div>
 				<button type="submit">Login</button>
+			</div>
+			<div>
+			<h3>${msg }</h3>
 			</div>
 			<div>
 			<span>Don't Have A Account?  

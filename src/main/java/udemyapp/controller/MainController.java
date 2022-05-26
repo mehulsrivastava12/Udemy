@@ -1,6 +1,7 @@
 package udemyapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,8 @@ public class MainController {
 	UserDao userDao;
 	@Autowired
 	InstructorDao instructorDao;
+	@Autowired
+	JdbcTemplate jdbcTemplate;
 	
 	@RequestMapping("/")
 	private String login() {
@@ -72,15 +75,45 @@ public class MainController {
 			return "userhome";
 		}
 		else {
+			model.addAttribute("msg","Invalid Username Or Password");
 			return "login";
 		}
 	}
 	
-	@RequestMapping("/searchinstructor")
+	@RequestMapping("/search")
 	private RedirectView searchinstructor(@RequestParam("instructor") String firstName,Model m) {
-		String url="searchinstructor/"+firstName;
-		RedirectView redirectView=new RedirectView();
-		redirectView.setUrl(url);
-		return redirectView;
+		try {
+			int count=jdbcTemplate.queryForObject("select count(*) from Instructor where firstName=?",Integer.class,firstName);
+			int c=jdbcTemplate.queryForObject("select count(*) from Course where title=?",Integer.class,firstName);
+			if(count>=1) {
+				String url="searchinstructor/"+firstName;
+				RedirectView redirectView=new RedirectView();
+				redirectView.setUrl(url);
+				return redirectView;
+			}
+			else if(c>=1){
+				String url="search/"+firstName;
+				RedirectView redirectView=new RedirectView();
+				redirectView.setUrl(url);
+				return redirectView;
+			}
+			else {
+				String url="nodata";
+				RedirectView redirectView=new RedirectView();
+				redirectView.setUrl(url);
+				return redirectView;
+			}
+			
+		} catch (Exception e) {
+			String url="nodata";
+			RedirectView redirectView=new RedirectView();
+			redirectView.setUrl(url);
+			return redirectView;
+		}
+	}
+	
+	@RequestMapping("/nodata")
+	private String nodata() {
+		return "nodata";
 	}
 }

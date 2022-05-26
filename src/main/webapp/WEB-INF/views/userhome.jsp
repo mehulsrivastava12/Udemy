@@ -9,7 +9,7 @@
 <title>User Home Page</title>
 </head>
 <body>
-	<form action="searchinstructor" method="post">
+	<form action="search" method="post">
 		<input type="text" placeholder="Search Here" name="instructor">
 		<button>Search</button>
 	</form>
