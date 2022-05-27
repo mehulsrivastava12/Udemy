@@ -25,10 +25,9 @@ public class InstructorDaoImpl implements InstructorDao{
 		this.hibernateTemplate.saveOrUpdate(instructor);
 	}
 	
-	@Transactional
 	public void deleteInstructor(int id) {
-		Instructor i = this.hibernateTemplate.load(Instructor.class, id);
-		this.hibernateTemplate.delete(i);
+		String sql="DELETE Instructor.*,Course.* FROM Instructor INNER JOIN Course ON Instructor.id=Course.id where Instructor.id=?";
+		this.jdbcTemplate.update(sql, id);
 	}
 	
 	public Instructor getInstructor(int id) {

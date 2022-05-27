@@ -2,6 +2,8 @@ package udemyapp.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.servlet.view.RedirectView;
 import udemyapp.dao.UserDao;
 import udemyapp.model.Course;
 import udemyapp.model.Instructor;
@@ -20,7 +22,6 @@ import udemyapp.model.UserEnrollment;
 public class UserController {
 	@Autowired
 	private UserDao userDao; 
-
 	
 	@RequestMapping("/register")
 	public String addUser(@ModelAttribute User user) {
@@ -37,7 +38,7 @@ public class UserController {
 	
 	@RequestMapping("/mycourses/{userId}")
 	public String myCourse(@PathVariable("userId") int userId,Model model) {
-		List<UserEnrollment> myCourse=userDao.getMyCourse(userId); 
+		List<UserEnrollment> myCourse=userDao.getMyCourse(userId);
 		model.addAttribute("myCourse",myCourse);
 		return "myCourse";
 	}
@@ -68,10 +69,12 @@ public class UserController {
 			}
 	}
 	
-	@RequestMapping("/delete/{userId}")
-	public String deleteUser(@PathVariable("userId") int userId) {
-		this.userDao.deleteUser(userId);
-		return "index";
+	@RequestMapping("/delete/{uid}")
+	public RedirectView deleteUser(@PathVariable("uid") int uid,HttpServletRequest request) {
+		this.userDao.deleteUser(uid);
+		RedirectView redirectView = new RedirectView();
+		redirectView.setUrl(request.getContextPath()+"/");
+		return redirectView;
 	}
 	
 	@RequestMapping("/update/{uid}")

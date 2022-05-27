@@ -27,7 +27,7 @@
 							<td><a href="${p.link }">Click Here</a></td>
 							<td>${p.price }</td>
 							<td>${p.id }</td>
-							<td><button><a href="${pageContext.request.contextPath }/userenroll/${uid}/${p.cid}">Enroll Now</a></button></td>
+							<td><button><a href="${pageContext.request.contextPath }/userenroll/${uid}/${p.cid}/${p.id }">Enroll Now</a></button></td>
 						</tr>
 					</c:forEach>
 				</tbody>

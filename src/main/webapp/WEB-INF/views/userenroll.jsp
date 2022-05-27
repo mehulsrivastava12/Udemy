@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page isELIgnored="false"%>
-<%@ page import = "java.io.*,java.util.*, javax.servlet.*,java.text.*" %>
+<%@ page import="java.io.*,java.util.*, javax.servlet.*,java.text.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +9,10 @@
 <title>User Enrollment</title>
 </head>
 <body>
-<%DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-String newDate = df.format(new Date()); 
-%>
+	<%
+	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+	String newDate = df.format(new Date());
+	%>
 	<div>
 		<form action="${pageContext.request.contextPath }/enroll/${uid}"
 			method="post">
@@ -26,7 +27,25 @@ String newDate = df.format(new Date());
 			</div>
 			<div>
 				<label for="date">Date</label> <input type="text" id="date"
-					placeholder="Enter Date" name="date" value="<%=newDate %>" readOnly>
+					placeholder="Enter Date" name="date" value="<%=newDate%>" readOnly>
+			</div>
+			<div>
+				<input type="hidden" id="title"
+					placeholder="Enter Title" name="title" value="${title }" readOnly>
+			</div>
+			<div>
+			<input type="hidden" id="id"
+					placeholder="Enter Instructor Id" name="id" value="${id }" readOnly>
+			</div>
+			<div>
+				<input type="hidden"
+					id="firstName" placeholder="Enter First Name" name="firstName"
+					value="${firstName }" readOnly>
+			</div>
+			<div>
+				<input type="hidden"
+					id="lastName" placeholder="Enter Last Name" name="lastName"
+					value="${lastName }" readOnly>
 			</div>
 			<div>
 				<button type="submit">Submit</button>

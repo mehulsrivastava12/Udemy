@@ -28,7 +28,15 @@
 		</tbody>
 	</table>
 	<div>
-		<button type="submit"><a href="${pageContext.request.contextPath }/update/${user.uid }">Click To Update Details</a></button>
+		<button type="submit">
+			<a href="${pageContext.request.contextPath }/update/${user.uid }">Click
+				To Update Details</a>
+		</button>
+	</div>
+	<div>
+		<button type="submit">
+			<a href="${pageContext.request.contextPath }/delete/${user.uid }">Delete Account</a>
+		</button>
 	</div>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package udemyapp.dao;
 
+
+
 import udemyapp.model.Course;
 
 public interface CourseDao {

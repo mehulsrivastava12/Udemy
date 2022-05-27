@@ -11,23 +11,25 @@
 <body>
 <h3>My Courses</h3>
 <table>
+
 		<thead>
 			<tr>
-				<th scope="col">Enrollment Id</th>
-				<th scope="col">User Id</th>
-				<th scope="col">Course Id</th>
+				<th scope="col">Course Title</th>
+				<th scope="col">Instructor FirstName</th>
+				<th scope="col">Instructor LastName</th>
 				<th scope="col">Date Enrolled</th>
 			</tr>
 		</thead>
 		<tbody>
 		<c:forEach items="${myCourse }" var="p">
 			<tr>
-				<th scope="row">${p.enrollmentId }</th>
-				<td>${p.userId }</td>
-				<td>${p.courseId }</td>
+				<td scope="row">${p.title}</td>
+				<td>${p.firstName }</td>
+				<td>${p.lastName }</td>
 				<td>${p.date }</td>
 			</tr>
 			</c:forEach>
+
 		</tbody>
 	</table>
 </body>

@@ -31,7 +31,7 @@ public class App {
 		User user=new User(1,"Mehul","Srivastava","12/12/2000","mhsri.1212@gmail.com","mehul");
 		userDao.createUser(user);
 		
-		UserEnrollment enrolluser=new UserEnrollment(1,1,2,"10/05/2017");
+		UserEnrollment enrolluser=new UserEnrollment(1,1,2,"10/05/2017","sdsd",2,"adasd","asdasd");
 		userDao.enroll(enrolluser);
 		
 		User us=userDao.getUser(1);

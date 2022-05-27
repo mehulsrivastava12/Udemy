@@ -22,13 +22,22 @@
 		</thead>
 		<tbody>
 			<tr>
-				<th scope="row">${getInstructorDetail.id }</th>
-				<td>${getInstructorDetail.firstName }</td>
-				<td>${getInstructorDetail.lastName }</td>
-				<td>${getInstructorDetail.dob }</td>
-				<td>${getInstructorDetail.email }</td>
+				<th scope="row">${instructor.id }</th>
+				<td>${instructor.firstName }</td>
+				<td>${instructor.lastName }</td>
+				<td>${instructor.dob }</td>
+				<td>${instructor.email }</td>
 			</tr>
 		</tbody>
 	</table>
+			<button type="submit">
+			<a href="${pageContext.request.contextPath }/updateinstructor/${instructor.id }">Click
+				To Update Details</a>
+		</button>
+	</div>
+	<div>
+		<button type="submit">
+			<a href="${pageContext.request.contextPath }/deleteinstructor/${instructor.id }">Delete Account</a>
+		</button>
 </body>
 </html>

@@ -10,8 +10,8 @@ public interface UserDao {
 
 	public void createUser(User user);
 	public void enroll(UserEnrollment userEnrollment);
-	public void deleteUser(int id);
-	public User getUser(int id);
+	public void deleteUser(int uid);
+	public User getUser(int uid);
 	public List<Course> getCourses();
 	public List<UserEnrollment> getMyCourse(int userid);
 	public List<Course> searchCourse(String title);

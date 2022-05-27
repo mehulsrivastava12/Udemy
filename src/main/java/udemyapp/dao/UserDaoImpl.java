@@ -32,10 +32,9 @@ public class UserDaoImpl implements UserDao{
 		this.hibernateTemplate.saveOrUpdate(userEnrollment);
 	}
 	
-	@Transactional
 	public void deleteUser(int uid) {
-		User u = this.hibernateTemplate.load(User.class, uid);
-		this.hibernateTemplate.delete(u);
+		String sql="DELETE User.*,UserEnrollment.* FROM User INNER JOIN UserEnrollment ON User.uid=UserEnrollment.userId where User.uid=?";
+		this.jdbcTemplate.update(sql, uid);
 	}
 
 	public User getUser(int uid) {

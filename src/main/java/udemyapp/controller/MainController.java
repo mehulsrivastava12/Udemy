@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
+import udemyapp.dao.CourseDao;
 import udemyapp.dao.InstructorDao;
 import udemyapp.dao.UserDao;
+import udemyapp.model.Course;
+import udemyapp.model.Instructor;
 
 @Controller
 public class MainController {
@@ -19,6 +22,8 @@ public class MainController {
 	UserDao userDao;
 	@Autowired
 	InstructorDao instructorDao;
+	@Autowired
+	CourseDao courseDao;
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
@@ -32,10 +37,15 @@ public class MainController {
 		return "signup";
 	}
 	
-	@RequestMapping("/userenroll/{uid}/{cid}")
-	private String userenroll(@PathVariable("uid") int uid,@PathVariable("cid") int cid,Model m) {
+	@RequestMapping("/userenroll/{uid}/{cid}/{id}")
+	private String userenroll(@PathVariable("uid") int uid,@PathVariable("cid") int cid,@PathVariable("id") int id,Model m) {
 		m.addAttribute("uid",uid);
 		m.addAttribute("cid",cid);
+		Course course=courseDao.getCourse(cid);
+		m.addAttribute("title",course.getTitle());
+		Instructor instructor=instructorDao.getInstructor(id);
+		m.addAttribute("firstName",instructor.getFirstName());
+		m.addAttribute("lastName",instructor.getLastName());
 		return "userenroll";
 	}
 	
