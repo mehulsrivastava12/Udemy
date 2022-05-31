@@ -33,8 +33,10 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	public void deleteUser(int uid) {
-		String sql="DELETE User.*,UserEnrollment.* FROM User INNER JOIN UserEnrollment ON User.uid=UserEnrollment.userId where User.uid=?";
-		this.jdbcTemplate.update(sql, uid);
+		String sql1="DELETE from User where uid=?";
+		String sql2="DELETE from UserEnrollment where userId=?";
+		this.jdbcTemplate.update(sql1, uid);
+		this.jdbcTemplate.update(sql2, uid);
 	}
 
 	public User getUser(int uid) {

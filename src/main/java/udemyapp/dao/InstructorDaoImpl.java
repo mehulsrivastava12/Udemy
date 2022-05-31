@@ -26,8 +26,10 @@ public class InstructorDaoImpl implements InstructorDao{
 	}
 	
 	public void deleteInstructor(int id) {
-		String sql="DELETE Instructor.*,Course.* FROM Instructor INNER JOIN Course ON Instructor.id=Course.id where Instructor.id=?";
-		this.jdbcTemplate.update(sql, id);
+		String sql1="DELETE from Course where id=?";
+		String sql2="DELETE from Instructor where id=?";
+		this.jdbcTemplate.update(sql1, id);
+		this.jdbcTemplate.update(sql2, id);
 	}
 	
 	public Instructor getInstructor(int id) {
