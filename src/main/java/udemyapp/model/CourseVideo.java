@@ -6,15 +6,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Course {
-
+public class CourseVideo {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy =GenerationType.AUTO)
+	private int videoId;
 	private int cid;
 	private String title;
 	private String description;
-	private long price;
-	private int id;
+	private String link;
+	public int getVideoId() {
+		return videoId;
+	}
+	public void setVideoId(int videoId) {
+		this.videoId = videoId;
+	}
 	public int getCid() {
 		return cid;
 	}
@@ -33,33 +38,28 @@ public class Course {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public long getPrice() {
-		return price;
+	public String getLink() {
+		return link;
 	}
-	public void setPrice(long price) {
-		this.price = price;
+	public void setLink(String link) {
+		this.link = link;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public Course(int cid, String title, String description,long price, int id) {
+	public CourseVideo(int videoId, int cid, String title, String description, String link) {
 		super();
+		this.videoId = videoId;
 		this.cid = cid;
 		this.title = title;
 		this.description = description;
-		this.price = price;
-		this.id = id;
+		this.link = link;
 	}
-	public Course() {
+	public CourseVideo() {
 		super();
 	}
+	
 	@Override
 	public String toString() {
-		return "Course [cid=" + cid + ", title=" + title + ", description=" + description
-				+ ", price=" + price + ", id=" + id + "]";
+		return "CourseVideo [videoId=" + videoId + ", cid=" + cid + ", title=" + title + ", description=" + description
+				+ ", link=" + link + "]";
 	}
 	
 }

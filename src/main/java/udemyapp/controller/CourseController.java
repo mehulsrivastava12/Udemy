@@ -1,6 +1,6 @@
 package udemyapp.controller;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 import udemyapp.dao.CourseDao;
 import udemyapp.model.Course;
@@ -26,9 +27,12 @@ public class CourseController {
 	}
 	
 	@RequestMapping("/createcourse/{id}")
-	public String addCourse(@PathVariable("id") int id,@ModelAttribute Course course) {
+	public RedirectView addCourse(@PathVariable("id") int id,@ModelAttribute Course course,Model model,HttpServletRequest request) {
 		this.courseDao.createCourse(course);
-		return "courseAdded";
+		model.addAttribute("cid",course.getCid());
+		RedirectView redirectView = new RedirectView();
+		redirectView.setUrl(request.getContextPath()+"/addvideo"+course.getCid());
+		return redirectView;
 	}
 	
 	@RequestMapping("/deletecourse/{courseId}")

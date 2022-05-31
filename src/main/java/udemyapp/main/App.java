@@ -58,7 +58,7 @@ public class App {
 		List<Course> instructorCourse=instructorDao.getInstructorCourse(2);
 		System.out.println(instructorCourse);
 		
-		Course course=new Course(1,"Java Core","Core Java is used for developing computing or desktop applications. Advance Java is used for developing enterprise applications. It is the first step, to begin with, Java.","https://www.youtube.com/watch?v=Yy1yx9uTHIs&list=PL0zysOflRCekkNEe4FDmdUN3FATodg3Yf",1500,3);
+		Course course=new Course(1,"Java Core","Core Java is used for developing computing or desktop applications. Advance Java is used for developing enterprise applications. It is the first step, to begin with, Java.",1500,3);
 		instructorDao.addCourse(course);
 		System.out.println("Program Ended.......!!!");
 

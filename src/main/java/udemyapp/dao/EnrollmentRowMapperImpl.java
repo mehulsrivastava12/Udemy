@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import udemyapp.model.UserEnrollment;
 
-public class EnrollmentRowMapper implements RowMapper<UserEnrollment> {
+public class EnrollmentRowMapperImpl implements RowMapper<UserEnrollment> {
 	
 	public UserEnrollment mapRow(ResultSet rs,int rowNum) throws SQLException{
 		UserEnrollment userEnrollment=new UserEnrollment();

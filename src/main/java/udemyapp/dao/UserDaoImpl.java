@@ -18,18 +18,17 @@ import udemyapp.model.UserEnrollment;
 public class UserDaoImpl implements UserDao{
 
 	@Autowired
-	private HibernateTemplate hibernateTemplate;
-	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	@Transactional
+
 	public void createUser(User user) {
-		this.hibernateTemplate.saveOrUpdate(user);
+		String sql="Insert Into User Values(?,?,?,?,?,?)";
+		this.jdbcTemplate.update(sql);
 	}
 	
-	@Transactional
 	public void enroll(UserEnrollment userEnrollment) {
-		this.hibernateTemplate.saveOrUpdate(userEnrollment);
+		String sql="Insert Into UserEnrollment Values(?,?,?,?,?,?)";
+		this.jdbcTemplate.update(sql);
 	}
 	
 	public void deleteUser(int uid) {
@@ -40,17 +39,20 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	public User getUser(int uid) {
-		return this.hibernateTemplate.get(User.class, uid);
+		String sql="select * from User where uid=?";
+		RowMapper<User> rowMapper=new UserRowMapperImpl();
+		User user=this.jdbcTemplate.queryForObject(sql, rowMapper,uid);
+		return user;
 	}
 
 	public List<Course> getCourses() {
-		List<Course> courses=this.hibernateTemplate.loadAll(Course.class);
+		List<Course> courses=this.jdbc;
 		return courses;
 	}
 
 	public List<UserEnrollment> getMyCourse(int uid) {
 		String sql="select * from UserEnrollment where userId=?";
-		RowMapper<UserEnrollment> rowMapper=new EnrollmentRowMapper();
+		RowMapper<UserEnrollment> rowMapper=new EnrollmentRowMapperImpl();
 		List<UserEnrollment> myCourse=this.jdbcTemplate.query(sql,rowMapper,uid);
 		return myCourse;
 	}
