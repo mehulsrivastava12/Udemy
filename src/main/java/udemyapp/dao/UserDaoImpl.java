@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import udemyapp.model.Course;
 import udemyapp.model.Instructor;
@@ -22,7 +20,7 @@ public class UserDaoImpl implements UserDao{
 	
 
 	public void createUser(User user) {
-		String sql="Insert Into User Values(?,?,?,?,?,?)";
+		String sql="INSERT INTO User VALUES (?, ?, ?, ?, ?, ?)";
 		this.jdbcTemplate.update(sql);
 	}
 	
@@ -46,7 +44,9 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	public List<Course> getCourses() {
-		List<Course> courses=this.jdbc;
+		String sql="select * from Course";
+		RowMapper<Course> rowMapper=new CourseRowMapperImpl();
+		List<Course> courses=this.jdbcTemplate.query(sql,rowMapper);
 		return courses;
 	}
 
