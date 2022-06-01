@@ -12,6 +12,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import udemyapp.dao.CourseDao;
 import udemyapp.dao.InstructorDao;
+import udemyapp.dao.InstructorDaoHibernate;
 import udemyapp.dao.UserDao;
 import udemyapp.model.Course;
 import udemyapp.model.Instructor;
@@ -22,6 +23,8 @@ public class MainController {
 	UserDao userDao;
 	@Autowired
 	InstructorDao instructorDao;
+	@Autowired
+	InstructorDaoHibernate instructorDaoHibernate;
 	@Autowired
 	CourseDao courseDao;
 	@Autowired
@@ -43,7 +46,7 @@ public class MainController {
 		m.addAttribute("cid",cid);
 		Course course=courseDao.getCourse(cid);
 		m.addAttribute("title",course.getTitle());
-		Instructor instructor=instructorDao.getInstructor(id);
+		Instructor instructor=instructorDaoHibernate.getInstructor(id);
 		m.addAttribute("firstName",instructor.getFirstName());
 		m.addAttribute("lastName",instructor.getLastName());
 		return "userenroll";

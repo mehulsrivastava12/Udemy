@@ -12,20 +12,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.view.RedirectView;
+
 import udemyapp.dao.UserDao;
+import udemyapp.dao.UserDaoHibernate;
 import udemyapp.model.Course;
 import udemyapp.model.Instructor;
 import udemyapp.model.User;
-import udemyapp.model.UserEnrollment;
+import udemyapp.viewobjects.EnrollViewObject;
 
 @Controller
 public class UserController {
 	@Autowired
-	private UserDao userDao; 
+	private UserDao userDao;
+	@Autowired
+	private UserDaoHibernate userDaoHibernate;
 	
 	@RequestMapping("/register")
 	public String addUser(@ModelAttribute User user) {
-		userDao.createUser(user);
+		userDaoHibernate.createUser(user);
 		return "login";
 	}
 	
@@ -38,7 +42,7 @@ public class UserController {
 	
 	@RequestMapping("/mycourses/{userId}")
 	public String myCourse(@PathVariable("userId") int userId,Model model) {
-		List<UserEnrollment> myCourse=userDao.getMyCourse(userId);
+		List<EnrollViewObject> myCourse=userDao.getMyCourse(userId);
 		model.addAttribute("myCourse",myCourse);
 		return "myCourse";
 	}
@@ -86,7 +90,7 @@ public class UserController {
 	
 	@RequestMapping(value="update",method = RequestMethod.POST)
 	public String update(@ModelAttribute User user) {
-		userDao.createUser(user);
+		userDaoHibernate.createUser(user);
 		return "userDetail";
 	}
 }

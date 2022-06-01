@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.view.RedirectView;
 
 import udemyapp.dao.InstructorDao;
+import udemyapp.dao.InstructorDaoHibernate;
 import udemyapp.model.Course;
 import udemyapp.model.Instructor;
 
@@ -22,10 +23,12 @@ public class InstructorController {
 
 	@Autowired
 	private InstructorDao instructorDao;
+	@Autowired
+	private InstructorDaoHibernate instructorDaoHibernate;
 	
 	@RequestMapping("/instructorregister")
 	public String addInstructor(@ModelAttribute Instructor instructor) {
-		instructorDao.createInstructor(instructor);
+		instructorDaoHibernate.createInstructor(instructor);
 		return "loginInstructor";
 	}
 	
@@ -39,7 +42,7 @@ public class InstructorController {
 	
 	@RequestMapping("/getinstructor/{instructorId}")
 	public String getInstructor(@PathVariable("instructorId") int instructorId,Model model) {
-		Instructor getDetail=this.instructorDao.getInstructor(instructorId);
+		Instructor getDetail=this.instructorDaoHibernate.getInstructor(instructorId);
 		model.addAttribute("instructor",getDetail);
 		return "getInstructorDetail";
 	}
@@ -53,14 +56,14 @@ public class InstructorController {
 	
 	@RequestMapping("/updateinstructor/{id}")
 	public String Instructor(@PathVariable("id") int id,Model model) {
-		Instructor instructor=this.instructorDao.getInstructor(id);
+		Instructor instructor=this.instructorDaoHibernate.getInstructor(id);
 		model.addAttribute("instructor",instructor);
 		return "update_instructor";
 	}
 	
 	@RequestMapping(value="updateinstructor",method = RequestMethod.POST)
 	public String updateInstructor(@ModelAttribute Instructor instructor) {
-		instructorDao.createInstructor(instructor);
+		instructorDaoHibernate.createInstructor(instructor);
 		return "getInstructorDetail";
 	}
 }

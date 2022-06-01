@@ -31,7 +31,7 @@ public class CourseController {
 		this.courseDao.createCourse(course);
 		model.addAttribute("cid",course.getCid());
 		RedirectView redirectView = new RedirectView();
-		redirectView.setUrl(request.getContextPath()+"/addvideo"+course.getCid());
+		redirectView.setUrl(request.getContextPath()+"/addvideo/"+course.getCid());
 		return redirectView;
 	}
 	

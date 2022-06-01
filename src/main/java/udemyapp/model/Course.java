@@ -14,7 +14,7 @@ public class Course {
 	private String title;
 	private String description;
 	private long price;
-	private int id;
+	private int instructor_id;
 	public int getCid() {
 		return cid;
 	}
@@ -40,18 +40,18 @@ public class Course {
 		this.price = price;
 	}
 	public int getId() {
-		return id;
+		return instructor_id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int instructor_id) {
+		this.instructor_id = instructor_id;
 	}
-	public Course(int cid, String title, String description,long price, int id) {
+	public Course(int cid, String title, String description,long price, int instructor_id) {
 		super();
 		this.cid = cid;
 		this.title = title;
 		this.description = description;
 		this.price = price;
-		this.id = id;
+		this.instructor_id = instructor_id;
 	}
 	public Course() {
 		super();
@@ -59,7 +59,7 @@ public class Course {
 	@Override
 	public String toString() {
 		return "Course [cid=" + cid + ", title=" + title + ", description=" + description
-				+ ", price=" + price + ", id=" + id + "]";
+				+ ", price=" + price + ", instructor_id=" + instructor_id + "]";
 	}
 	
 }

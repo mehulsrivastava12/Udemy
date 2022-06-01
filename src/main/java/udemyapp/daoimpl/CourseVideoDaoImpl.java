@@ -1,33 +1,25 @@
-package udemyapp.dao;
+package udemyapp.daoimpl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
+import udemyapp.dao.CourseVideoDao;
 import udemyapp.model.CourseVideo;
+import udemyapp.rowmapper.CourseVideoRowMapperImpl;
 
 @Component
 public class CourseVideoDaoImpl implements CourseVideoDao {
-	
-	@Autowired
-	private HibernateTemplate hibernateTemplate;
+
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
-	@Transactional
-	public void createVideo(CourseVideo courseVideo) {
-		this.hibernateTemplate.saveOrUpdate(courseVideo);
-	}
 
-	@Transactional
 	public void deleteVideo(int videoId) {
-		CourseVideo courseVideo=this.hibernateTemplate.load(CourseVideo.class, videoId);
-		this.hibernateTemplate.delete(courseVideo);
+		String sql="DELETE from CourseVideo where videoId=? ";
+		this.jdbcTemplate.update(sql,videoId);
 	}
 
 	public List<CourseVideo> getVideo(int videoId) {

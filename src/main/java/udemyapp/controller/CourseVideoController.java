@@ -13,16 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import udemyapp.dao.CourseVideoDao;
+import udemyapp.dao.CourseVideoDaoHibernate;
 import udemyapp.model.CourseVideo;
 
 @Controller
 public class CourseVideoController {
 	@Autowired
 	private CourseVideoDao courseVideoDao;
+	@Autowired
+	private CourseVideoDaoHibernate courseVideoDaoHibernate;
 	
 	@RequestMapping("/addvideo/{id}")
 	public RedirectView addVideo(@ModelAttribute CourseVideo courseVideo,Model model,HttpServletRequest request) {
-		courseVideoDao.createVideo(courseVideo);
+		courseVideoDaoHibernate.createVideo(courseVideo);
 		model.addAttribute("cid",courseVideo.getCid());
 		RedirectView redirectView = new RedirectView();
 		redirectView.setUrl(request.getContextPath()+"/mycoursevideo/"+courseVideo.getCid());
@@ -48,7 +51,6 @@ public class CourseVideoController {
 	
 	@RequestMapping("/addvideoform/{cid}")
 	public String addvideoform(@PathVariable("cid") int cid,Model model) {
-		
 		return "addvideo";
 	}
 }

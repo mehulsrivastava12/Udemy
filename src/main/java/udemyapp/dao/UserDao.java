@@ -4,16 +4,14 @@ import java.util.List;
 import udemyapp.model.Course;
 import udemyapp.model.Instructor;
 import udemyapp.model.User;
-import udemyapp.model.UserEnrollment;
+import udemyapp.viewobjects.EnrollViewObject;
 
 public interface UserDao {
 
-	public void createUser(User user);
-	public void enroll(UserEnrollment userEnrollment);
 	public void deleteUser(int uid);
 	public User getUser(int uid);
 	public List<Course> getCourses();
-	public List<UserEnrollment> getMyCourse(int userid);
+	public List<EnrollViewObject> getMyCourse(int userid);
 	public List<Course> searchCourse(String title);
 	public List<Instructor> searchInstructor(String instructor);
 	public int validateUser(String email,String password);

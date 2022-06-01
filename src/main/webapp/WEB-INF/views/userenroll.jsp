@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page isELIgnored="false"%>
+<%@ include file="./base.jsp"%>
 <%@ page import="java.io.*,java.util.*, javax.servlet.*,java.text.*"%>
 <!DOCTYPE html>
 <html>
@@ -36,16 +37,6 @@
 			<div>
 			<input type="hidden" id="id"
 					placeholder="Enter Instructor Id" name="id" value="${id }" readOnly>
-			</div>
-			<div>
-				<input type="hidden"
-					id="firstName" placeholder="Enter First Name" name="firstName"
-					value="${firstName }" readOnly>
-			</div>
-			<div>
-				<input type="hidden"
-					id="lastName" placeholder="Enter Last Name" name="lastName"
-					value="${lastName }" readOnly>
 			</div>
 			<div>
 				<button type="submit">Submit</button>

@@ -1,6 +1,7 @@
 <html>
 <head>
 <%@page isELIgnored="false"%>
+<%@ include file="./base.jsp"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 </head>
 <body>
@@ -13,7 +14,6 @@
 						<th>Course Id</th>
 						<th>Course Title</th>
 						<th>Course Description</th>
-						<th>Course Link</th>
 						<th>Course Price</th>
 						<th>Instructor Id</th>
 					</tr>
@@ -24,7 +24,6 @@
 							<th>${p.cid }</th>
 							<td>${p.title }</td>
 							<td>${p.description }</td>
-							<td><a href="${p.link }">Click Here</a></td>
 							<td>${p.price }</td>
 							<td>${p.id }</td>
 							<td><button><a href="${pageContext.request.contextPath }/userenroll/${uid}/${p.cid}/${p.id }">Enroll Now</a></button></td>
