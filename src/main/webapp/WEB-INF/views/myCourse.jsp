@@ -28,7 +28,7 @@
 						<c:forEach items="${myCourse }" var="p">
 							<tr>
 								<td scope="row">${p.title}</td>
-								<td>${p.firstName }${p.lastName }</td>
+								<td>${p.firstName } ${p.lastName }</td>
 								<td>${p.date }</td>
 								<td><a
 									href="${pageContext.request.contextPath }/usercoursevideo/${p.cid}">Click

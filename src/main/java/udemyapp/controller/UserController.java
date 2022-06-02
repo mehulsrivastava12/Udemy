@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.view.RedirectView;
 
+import udemyapp.dao.InstructorDao;
 import udemyapp.dao.UserDao;
 import udemyapp.dao.UserDaoHibernate;
 import udemyapp.model.Course;
@@ -25,6 +26,8 @@ import udemyapp.viewobjects.EnrollViewObject;
 public class UserController {
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private InstructorDao instructorDao;
 	@Autowired
 	private UserDaoHibernate userDaoHibernate;
 	
@@ -62,15 +65,17 @@ public class UserController {
 		return "allCourses";
 	}
 	
-	@RequestMapping("/search/{title}")
-	public String search(@PathVariable("title") String title,Model model) { 
+	@RequestMapping("/search/{uid}/{title}")
+	public String search(@PathVariable("title") String title,@PathVariable("uid") String uid,Model model) { 
 		List<Course> searchCourses=userDao.searchCourse(title);
 		model.addAttribute("searchCourses",searchCourses);
+		model.addAttribute("uid",uid);
 		return "searchCourses";
 	}
 	
-	@RequestMapping("/searchinstructor/{instructor}")
-	public String searchInstructor(@PathVariable("instructor") String firstname,Model model) {
+	@RequestMapping("/searchinstructor/{uid}/{instructor}")
+	public String searchInstructor(@PathVariable("instructor") String firstname,@PathVariable("uid") String uid,Model model) {
+		model.addAttribute("uid",uid);
 		List<Instructor> searchInstructor=userDao.searchInstructor(firstname);
 		if(searchInstructor.size()==0) {
 			return null;
@@ -79,6 +84,13 @@ public class UserController {
 			model.addAttribute("searchInstructor",searchInstructor);
 			return "searchInstructor";
 			}
+	}
+	
+	@RequestMapping("/searchinstructorcourse/{uid}/{id}")
+	public String searchInstructorCourse(@PathVariable("id") int id,@PathVariable("uid") int uid,Model model) {
+		List<Course> searchinstructorcourse=this.instructorDao.getInstructorCourse(id);
+		model.addAttribute("searchinstructorcourse",searchinstructorcourse);
+		return "searchinstructorcourse";
 	}
 	
 	@RequestMapping("/delete/{uid}")

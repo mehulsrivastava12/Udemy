@@ -2,6 +2,8 @@ package udemyapp.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -97,21 +99,21 @@ public class MainController {
 		}
 	}
 	
-	@RequestMapping("/search")
-	private RedirectView searchinstructor(@RequestParam("instructor") String firstName,Model m) {
+	@RequestMapping("/search/{uid}")
+	private RedirectView searchinstructor(@PathVariable("uid") int uid,@RequestParam("instructor") String firstName,Model m,HttpServletRequest request) {
 		try {
 			int count=jdbcTemplate.queryForObject("select count(*) from Instructor where firstName=?",Integer.class,firstName);
 			int c=jdbcTemplate.queryForObject("select count(*) from Course where title=?",Integer.class,firstName);
 			if(count>=1) {
-				String url="searchinstructor/"+firstName;
+				String url="searchinstructor/"+uid+"/"+firstName;
 				RedirectView redirectView=new RedirectView();
-				redirectView.setUrl(url);
+				redirectView.setUrl(request.getContextPath()+"/"+url);
 				return redirectView;
 			}
 			else if(c>=1){
-				String url="search/"+firstName;
+				String url="search/"+uid+"/"+firstName;
 				RedirectView redirectView=new RedirectView();
-				redirectView.setUrl(url);
+				redirectView.setUrl(request.getContextPath()+"/"+url);
 				return redirectView;
 			}
 			else {

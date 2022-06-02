@@ -36,14 +36,20 @@
 					</tbody>
 				</table>
 				<div class="text-center mt-5 d-flex justify-content-center p-4">
-					<button type="submit">
-						<a href="${pageContext.request.contextPath }/update/${user.uid }">Click
-							To Update Details</a>
-					</button>
-					<button type="submit" class="text-center ml-5">
-						<a href="${pageContext.request.contextPath }/delete/${user.uid }">Delete
-							Account</a>
-					</button>
+					<form
+						action="${pageContext.request.contextPath }/update/${user.uid }"
+						method="post">
+						<button type="submit"
+							class="text-center ml-5 btn btn-outline-success">Update
+							Details</button>
+					</form>
+					<form
+						action="${pageContext.request.contextPath }/delete/${user.uid }"
+						method="post">
+						<button type="submit"
+							class="text-center ml-5 btn btn-outline-danger">Delete
+							Account</button>
+					</form>
 				</div>
 			</div>
 		</div>

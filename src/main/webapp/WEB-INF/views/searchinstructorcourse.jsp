@@ -9,7 +9,7 @@
 		<div class="container mt-3">
 			<div class="row">
 				<div class="col-md-12">
-						<h1 class="text-center mt-5 mb-5 card alert alert-primary" style="width:500px;margin-left:300px">All Courses</h1>
+						<h1 class="text-center mt-5 mb-5 card alert alert-primary" style="width:500px;margin-left:300px">Instructor Courses</h1>
 					<table
 						class="table table-hover justify-content-center text-center ml-3 mr-3">
 						<thead class="thead-light">
@@ -21,7 +21,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${allCourses }" var="p">
+							<c:forEach items="${searchinstructorcourse }" var="p">
 								<tr>
 									<td>${p.title }</td>
 									<td>${p.description }</td>

@@ -7,36 +7,41 @@
 <head>
 <meta charset="UTF-8">
 </head>
-<body>
-	<h1 class=>Change Your Details</h1>
-	<form action="${pageContext.request.contextPath }/updateinstructor" method="post">
-		<input type="text" value="${instructor.id }" name="id" readOnly />
-		<div>
-			<label for="firstName">First Name</label><input type="text"
-				id="firstName" name="firstName" placeholder="Enter Your First Name"
-				value="${instructor.firstName }">
-		</div>
-		<div>
-			<label for="lastName">Last Name</label><input type="text"
-				id="lastName" name="lastName" placeholder="Enter Your Last Name"
-				value="${instructor.lastName }">
-		</div>
-		<div>
-			<label for="dob">Date Of Birth</label><input type="text" id="dob"
-				name="dob" placeholder="Enter Your Date Of Birth"
-				value="${instructor.dob }">
-		</div>
-		<div>
-			<label for="email">Email</label><input type="text" id="email"
-				name="email" placeholder="Enter Your Email" value="${instructor.email }">
-		</div>
-		<div>
-			<label for="password">Password</label><input type="text" id="password"
-				name="password" placeholder="Enter Your Password" value="${instructor.password }">
-		</div>
-		<div>
-			<button type="submit">Submit</button>
-		</div>
-	</form>
+<body class="bg-light">
+	<div class="card mt-5 shadow p-3 mb-5 bg-white rounded" style="width:500px;margin-left:450px">
+		<h1 class="mt-5 mb-5 text-center card bg-light">Update Your Details</h1>
+		<form action="${pageContext.request.contextPath }/updateinstructor"
+			method="post">
+			<input type="hidden" value="${instructor.id }" name="id" readOnly />
+			<div>
+				<label for="firstName mb-5">First Name</label><input class="form-control" type="text"
+					id="firstName" name="firstName" placeholder="Enter Your First Name"
+					value="${instructor.firstName }">
+			</div>
+			<div>
+				<label for="lastName" class="mt-3">Last Name</label><input class="form-control" type="text"
+					id="lastName" name="lastName" placeholder="Enter Your Last Name"
+					value="${instructor.lastName }">
+			</div>
+			<div>
+				<label for="dob" class="mt-3">Date Of Birth</label><input class="form-control" type="text" id="dob"
+					name="dob" placeholder="Enter Your Date Of Birth"
+					value="${instructor.dob }">
+			</div>
+			<div>
+				<label for="email" class="mt-3">Email</label><input class="form-control" type="text" id="email"
+					name="email" placeholder="Enter Your Email"
+					value="${instructor.email }">
+			</div>
+			<div>
+				<label for="password" class="mt-3">Password</label><input class="form-control" type="password"
+					id="password" name="password" placeholder="Enter Your Password"
+					value="${instructor.password }">
+			</div>
+			<div class="text-center">
+				<button type="submit" class="btn btn-outline-success mt-5 ">Submit</button>
+			</div>
+		</form>
+	</div>
 </body>
 </html>
