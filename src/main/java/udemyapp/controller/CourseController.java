@@ -28,10 +28,11 @@ public class CourseController {
 	
 	@RequestMapping("/createcourse/{id}")
 	public RedirectView addCourse(@PathVariable("id") int id,@ModelAttribute Course course,Model model,HttpServletRequest request) {
+		System.out.println(course);
 		this.courseDao.createCourse(course);
 		model.addAttribute("cid",course.getCid());
 		RedirectView redirectView = new RedirectView();
-		redirectView.setUrl(request.getContextPath()+"/addvideo/"+course.getCid());
+		redirectView.setUrl(request.getContextPath()+"/addvideoform/"+course.getCid());
 		return redirectView;
 	}
 	

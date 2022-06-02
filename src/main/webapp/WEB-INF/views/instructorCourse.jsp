@@ -33,7 +33,7 @@
 								<td>${p.title }</td>
 								<td>${p.description }</td>
 								<td>${p.price }</td>
-								<td>${p.id }</td>
+								<td>${p.instructor_id }</td>
 								<td><a href="${pageContext.request.contextPath }/addvideoform/${p.cid}">Add Video</a></td>
 								<td><a href="${pageContext.request.contextPath }/mycoursevideo/${p.cid}">Click Here</a></td>
 							</tr>

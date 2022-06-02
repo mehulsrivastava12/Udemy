@@ -39,13 +39,13 @@ public class Course {
 	public void setPrice(long price) {
 		this.price = price;
 	}
-	public int getId() {
+	public int getInstructor_id() {
 		return instructor_id;
 	}
-	public void setId(int instructor_id) {
+	public void setInstructor_id(int instructor_id) {
 		this.instructor_id = instructor_id;
 	}
-	public Course(int cid, String title, String description,long price, int instructor_id) {
+	public Course(int cid, String title, String description, long price, int instructor_id) {
 		super();
 		this.cid = cid;
 		this.title = title;
@@ -55,11 +55,12 @@ public class Course {
 	}
 	public Course() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {
-		return "Course [cid=" + cid + ", title=" + title + ", description=" + description
-				+ ", price=" + price + ", instructor_id=" + instructor_id + "]";
+		return "Course [cid=" + cid + ", title=" + title + ", description=" + description + ", price=" + price
+				+ ", instructor_id=" + instructor_id + "]";
 	}
 	
 }

@@ -32,8 +32,8 @@
 
 				<div>
 				<input type="hidden"
-						id="id" placeholder="Enter Id Of Course Instructor"
-						name="id" value="${id }" >
+						id="instructor_id" placeholder="Enter Id Of Course Instructor"
+						name="instructor_id" value="${id }" >
 				</div>
 
 				<div class="container text-center mb-3">

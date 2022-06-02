@@ -16,6 +16,7 @@ public class EnrollViewObjectRowMapperImpl implements RowMapper<EnrollViewObject
 		enrollViewObject.setFirstName(rs.getString("firstName"));
 		enrollViewObject.setLastName(rs.getString("lastName"));
 		enrollViewObject.setDate(rs.getString("date"));
+		enrollViewObject.setCid(rs.getInt("cid"));
 		return enrollViewObject;
 	}
 }

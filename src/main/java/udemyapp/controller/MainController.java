@@ -1,5 +1,7 @@
 package udemyapp.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -85,6 +87,8 @@ public class MainController {
 		int loginFlag1=userDao.validateUser(email, password);
 		if(loginFlag1 > 0) {
 			model.addAttribute("uid",loginFlag1);
+			List<Course> allCourses=userDao.getCourses(); 
+			model.addAttribute("allCourses",allCourses);
 			return "userhome";
 		}
 		else {

@@ -1,8 +1,5 @@
 package udemyapp.viewobjects;
 
-import javax.persistence.Entity;
-
-@Entity
 public class EnrollViewObject {
 
 	private int enrollmentId;
@@ -10,6 +7,7 @@ public class EnrollViewObject {
 	private String firstName;
 	private String lastName;
 	private String date;
+	private int cid;
 	public int getEnrollmentId() {
 		return enrollmentId;
 	}
@@ -40,21 +38,23 @@ public class EnrollViewObject {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public EnrollViewObject(int enrollmentId, String title, String firstName, String lastName, String date) {
+	public int getCid() {
+		return cid;
+	}
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+	public EnrollViewObject(int enrollmentId, String title, String firstName, String lastName, String date, int cid) {
 		super();
 		this.enrollmentId = enrollmentId;
 		this.title = title;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.date = date;
+		this.cid = cid;
 	}
 	public EnrollViewObject() {
-		super();
-	}
-	@Override
-	public String toString() {
-		return "EnrollViewObject [enrollmentId=" + enrollmentId + ", title=" + title + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", date=" + date + "]";
+		super();	
 	}
 	
 	

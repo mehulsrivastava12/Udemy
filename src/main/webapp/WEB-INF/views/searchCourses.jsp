@@ -28,7 +28,7 @@
 					<td>${p.title }</td>
 					<td>${p.description }</td>
 					<td>${p.price }</td>
-					<td>${p.id }</td>
+					<td>${p.instructor_id }</td>
 				</tr>
 			</c:forEach>
 		</tbody>

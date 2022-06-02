@@ -12,9 +12,11 @@ import udemyapp.model.Course;
 import udemyapp.model.Instructor;
 import udemyapp.model.User;
 import udemyapp.rowmapper.CourseRowMapperImpl;
+import udemyapp.rowmapper.EnrollCourseVideoRowMapperImpl;
 import udemyapp.rowmapper.EnrollViewObjectRowMapperImpl;
 import udemyapp.rowmapper.InstructorRowMapperImpl;
 import udemyapp.rowmapper.UserRowMapperImpl;
+import udemyapp.viewobjects.EnrollCourseVideoViewObject;
 import udemyapp.viewobjects.EnrollViewObject;
 
 @Component
@@ -45,9 +47,15 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public List<EnrollViewObject> getMyCourse(int uid) {
-		String sql = "select ue.enrollmentId,i.firstName,i.lastName,c.title,ue.date from UserEnrollment ue INNER JOIN Course c ON ue.courseId=c.cid INNER JOIN Instructor i ON c.id=i.id AND ue.userId=?";
+		String sql = "select c.cid,ue.enrollmentId,i.firstName,i.lastName,c.title,ue.date from UserEnrollment ue INNER JOIN Course c ON ue.courseId=c.cid INNER JOIN Instructor i ON c.instructor_id=i.id AND ue.userId=?";
 		List<EnrollViewObject> myCourse = this.jdbcTemplate.query(sql, new EnrollViewObjectRowMapperImpl(), uid);
 		return myCourse;
+	}
+	
+	public List<EnrollCourseVideoViewObject> getMyVideo(int cid){
+		String sql="Select cv.videoId,cv.title,cv.description,cv.link from Course c INNER JOIN CourseVideo cv On c.cid=cv.cid AND c.cid=?";
+		List<EnrollCourseVideoViewObject> myVideo=this.jdbcTemplate.query(sql, new EnrollCourseVideoRowMapperImpl(),cid);
+		return myVideo;
 	}
 
 	public List<Course> searchCourse(String title) {

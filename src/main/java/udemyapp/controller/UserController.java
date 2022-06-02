@@ -18,6 +18,7 @@ import udemyapp.dao.UserDaoHibernate;
 import udemyapp.model.Course;
 import udemyapp.model.Instructor;
 import udemyapp.model.User;
+import udemyapp.viewobjects.EnrollCourseVideoViewObject;
 import udemyapp.viewobjects.EnrollViewObject;
 
 @Controller
@@ -45,6 +46,13 @@ public class UserController {
 		List<EnrollViewObject> myCourse=userDao.getMyCourse(userId);
 		model.addAttribute("myCourse",myCourse);
 		return "myCourse";
+	}
+	
+	@RequestMapping("/usercoursevideo/{cid}")
+	public String myVideo(@PathVariable("cid") int cid,Model model) {
+		List<EnrollCourseVideoViewObject> myVideo=userDao.getMyVideo(cid);
+		model.addAttribute("myVideo",myVideo);
+		return "usercoursevideo";
 	}
 	
 	@RequestMapping("/allCourses/{uid}")

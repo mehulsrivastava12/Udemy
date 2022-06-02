@@ -7,7 +7,7 @@
 <body>
 	<form method="post">
 		<div>
-			<h1>All Courses</h1>
+			<h1 class="text-center">All Courses</h1>
 			<table>
 				<thead>
 					<tr>
@@ -25,8 +25,8 @@
 							<td>${p.title }</td>
 							<td>${p.description }</td>
 							<td>${p.price }</td>
-							<td>${p.id }</td>
-							<td><button><a href="${pageContext.request.contextPath }/userenroll/${uid}/${p.cid}/${p.id }">Enroll Now</a></button></td>
+							<td>${p.instructor_id }</td>
+							<td><button><a href="${pageContext.request.contextPath }/userenroll/${uid}/${p.cid}/${p.instructor_id }">Enroll Now</a></button></td>
 						</tr>
 					</c:forEach>
 				</tbody>
