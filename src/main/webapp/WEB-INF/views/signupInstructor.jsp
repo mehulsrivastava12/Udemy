@@ -17,7 +17,7 @@
 
 <title>Sign Up Here</title>
 </head>
-<body class="bg-secondary">
+<body style="background-color:#95B9C7">
 	<div class="container mt-2">
 		<div class="card" style="width: 600px; margin-left: 250px;">
 			<h3 class="text-center mt-5">Sign Up As A Instructor</h3>

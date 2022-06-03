@@ -20,7 +20,7 @@
 	<div class="container mt-2">
 		<div class="card" style="width: 600px; margin-left: 250px;">
 			<div class="mt-2 text-center"
-				style="width: 350px; margin-left:125px; background-color:#BCC6CC">
+				style="width: 350px; margin-left:125px;" >
 				<h3 class="text-center mt-3 mb-3">Sign Up As User</h3>
 			</div>
 			<form action="register" method="post">

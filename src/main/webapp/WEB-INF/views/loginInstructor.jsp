@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ include file="./base.jsp"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -31,7 +32,9 @@
 						class="form-control" id="password" aria-describedby="emailHelp"
 						placeholder="Enter Password" name="password" required>
 				</div>
-
+				<div class="text-center">
+					<p class="text-danger">${msg }</p>
+				</div>
 				<div class="container text-center mb-3">
 					<button type="submit" class="btn btn-primary">Login</button>
 				</div>

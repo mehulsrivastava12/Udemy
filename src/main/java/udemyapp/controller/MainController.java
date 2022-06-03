@@ -19,7 +19,6 @@ import udemyapp.dao.InstructorDao;
 import udemyapp.dao.InstructorDaoHibernate;
 import udemyapp.dao.UserDao;
 import udemyapp.model.Course;
-import udemyapp.model.Instructor;
 
 @Controller
 public class MainController {
@@ -42,18 +41,6 @@ public class MainController {
 	@RequestMapping("/signup")
 	private String signup() {
 		return "signup";
-	}
-	
-	@RequestMapping("/userenroll/{uid}/{cid}/{id}")
-	private String userenroll(@PathVariable("uid") int uid,@PathVariable("cid") int cid,@PathVariable("id") int id,Model m) {
-		m.addAttribute("uid",uid);
-		m.addAttribute("cid",cid);
-		Course course=courseDao.getCourse(cid);
-		m.addAttribute("title",course.getTitle());
-		Instructor instructor=instructorDaoHibernate.getInstructor(id);
-		m.addAttribute("firstName",instructor.getFirstName());
-		m.addAttribute("lastName",instructor.getLastName());
-		return "userenroll";
 	}
 	
 	@RequestMapping("/addcourse/{id}")
@@ -82,6 +69,7 @@ public class MainController {
 			return "instructorhome";
 		}
 		else {
+			m.addAttribute("msg","Invalid Username Or Password");
 			return "loginInstructor";
 		}
 	}
@@ -121,14 +109,14 @@ public class MainController {
 			else {
 				String url="nodata";
 				RedirectView redirectView=new RedirectView();
-				redirectView.setUrl(url);
+				redirectView.setUrl(request.getContextPath()+"/"+url);
 				return redirectView;
 			}
 			
 		} catch (Exception e) {
 			String url="nodata";
 			RedirectView redirectView=new RedirectView();
-			redirectView.setUrl(url);
+			redirectView.setUrl(request.getContextPath()+"/"+url);
 			return redirectView;
 		}
 	}

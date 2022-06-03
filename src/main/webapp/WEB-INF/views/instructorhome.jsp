@@ -36,14 +36,38 @@
 					href="instructorcourse/${id }">My Courses <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active ml-5"><a
-					class="nav-link text-white font-weight-bold"
-					href="${pageContext.request.contextPath }/">Log Out <span
-						class="sr-only">(current)</span></a></li>
+					class="nav-link text-white font-weight-bold" data-toggle="modal"
+					data-target="#exampleModal">Log Out <span class="sr-only">(current)</span></a></li>
+				<div class="modal fade" id="exampleModal" tabindex="-1"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Log Out</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">Are You Sure You Want To Log Out</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Cancel</button>
+								<form action="${pageContext.request.contextPath }/"
+									method="post">
+									<button type="submit" class="btn btn-outline-danger">Log
+										Out</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ul>
+		</div>
 			</ul>
 		</div>
 	</nav>
 	<c:forEach items="${instructorCourse }" var="p">
-		<div class="card d-inline-flex ml-5 mr-5 mt-5" style="width: 18rem;">
+		<div class="card d-inline-flex ml-5 mr-5 mt-5" style="width: 18rem; height:26rem;">
 			<a href="#"><img class="card-img-top"
 				src="https://www.onlinecoursereport.com/wp-content/uploads/2020/06/shutterstock_1150510607-1024x512.jpg"
 				alt="Card image cap"></a>

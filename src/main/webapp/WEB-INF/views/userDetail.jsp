@@ -12,7 +12,7 @@
 	<div class="container mt-3">
 		<div class="row">
 			<div class="col-md-12">
-				<h1 class=" mt-5 text-center">User Profile</h1>
+				<h1 class=" mt-5 text-center">Profile</h1>
 				<div class="text-center">
 					<img style="width: 200px; height: 200px;"
 						src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" />
