@@ -18,8 +18,8 @@ public class InstructorDaoImpl implements InstructorDao{
 	private JdbcTemplate jdbcTemplate;
 	
 	public void deleteInstructor(int instructorid) {
-		String sql1="DELETE from Course where instructor_id=?";
-		String sql2="DELETE from Instructor where instructor_id=?";
+		String sql1="DELETE Course.*,CourseVideo.* from Course INNER JOIN CourseVideo ON Course.cid=CourseVideo.cid AND instructor_id=?";
+		String sql2="DELETE from Instructor where id=?";
 		this.jdbcTemplate.update(sql1,instructorid);
 		this.jdbcTemplate.update(sql2, instructorid);
 	}
@@ -29,6 +29,13 @@ public class InstructorDaoImpl implements InstructorDao{
 		RowMapper<Course> rowMapper=new CourseRowMapperImpl();
 		List<Course> instructorCourse=this.jdbcTemplate.query(sql,rowMapper,instructorId);
 		return instructorCourse;
+	}
+	
+	public List<Course> searchMyCourse(String title) {
+		String sql = "select * from Course where title=?";
+		RowMapper<Course> rowMapper = new CourseRowMapperImpl();
+		List<Course> allCourses = this.jdbcTemplate.query(sql, rowMapper, title);
+		return allCourses;
 	}
 
 	public int validateInstructor(String email,String password) {

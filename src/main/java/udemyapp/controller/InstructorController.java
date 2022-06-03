@@ -66,4 +66,12 @@ public class InstructorController {
 		instructorDaoHibernate.createInstructor(instructor);
 		return "getInstructorDetail";
 	}
+	
+	@RequestMapping("/searchmy/{id}/{title}")
+	public String search(@PathVariable("title") String title,@PathVariable("id") String id,Model model) { 
+		List<Course> searchCourses=instructorDao.searchMyCourse(title);
+		model.addAttribute("searchCourses",searchCourses);
+		model.addAttribute("id",id);
+		return "searchCourses";
+	}
 }

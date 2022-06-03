@@ -77,6 +77,8 @@ public class MainController {
 		int loginFlag=instructorDao.validateInstructor(email, password);
 		if(loginFlag > 0) {
 			m.addAttribute("id",loginFlag);
+			List<Course> instructorCourse=this.instructorDao.getInstructorCourse(loginFlag);
+			m.addAttribute("instructorCourse",instructorCourse);
 			return "instructorhome";
 		}
 		else {
