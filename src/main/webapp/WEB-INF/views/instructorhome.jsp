@@ -55,14 +55,12 @@
 									data-dismiss="modal">Cancel</button>
 								<form action="${pageContext.request.contextPath }/"
 									method="post">
-									<button type="submit" class="btn btn-outline-danger">Log
+									<button type="submit" class="btn btn-outline-danger" onclick="logout()">Log
 										Out</button>
 							</div>
 						</div>
 					</div>
 				</div>
-			</ul>
-		</div>
 			</ul>
 		</div>
 	</nav>
@@ -78,5 +76,17 @@
 			</div>
 		</div>
 	</c:forEach>
+		<script>
+	function logout(){
+		localStorage.removeItem('load');
+		window.location.href="${pageContext.request.contextPath }/login";
+	}
+	window.addEventListener("load",function(){
+		if(localStorage.getItem('load')!=${id }){
+			alert("Instructor LogIn Successfully");
+			localStorage.setItem('load',${id });
+		}
+	})
+	</script>
 </body>
 </html>
