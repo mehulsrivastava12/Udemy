@@ -3,28 +3,35 @@
   * First of all in pom.xml of the project in plugin section add the dependency
 ```
   <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.1</version>
-          <configuration>
-            <compilerId>groovy-eclipse-compiler</compilerId>
-            <source>1.8</source>
-            <target>1.8</target>
-          </configuration>
-          <dependencies>
-            <dependency>
-              <groupId>org.codehaus.groovy</groupId>
-              <artifactId>groovy-eclipse-compiler</artifactId>
-              <version>3.4.0-01</version>
-            </dependency>
-            <dependency>
-              <groupId>org.codehaus.groovy</groupId>
-              <artifactId>groovy-eclipse-batch</artifactId>
-              <version>2.5.8-01</version>
-            </dependency>
-          </dependencies>
-        </plugin>
+     <plugin>
+      <groupId>org.codehaus.gmavenplus</groupId>
+      <artifactId>gmavenplus-plugin</artifactId>
+      <version>1.7.0</version>
+      <executions>
+       <execution>
+        <goals>
+         <goal>execute</goal>
+         <goal>addSources</goal>
+         <goal>addTestSources</goal>
+         <goal>generateStubs</goal>
+         <goal>compile</goal>
+         <goal>generateTestStubs</goal>
+         <goal>compileTests</goal>
+         <goal>removeStubs</goal>
+         <goal>removeTestStubs</goal>
+        </goals>
+       </execution>
+      </executions>
+      <dependencies>
+       <dependency>
+        <groupId>org.codehaus.groovy</groupId>
+        <artifactId>groovy-all</artifactId>
+        <version>3.0.11</version>
+        <scope>runtime</scope>
+        <type>pom</type>
+       </dependency>
+      </dependencies>
+     </plugin>
   </plugins>
 ``` 
   * And in the dependencies tag add these two dependency after this update your project
@@ -32,7 +39,7 @@
       <dependency>
         <groupId>org.codehaus.groovy</groupId>
         <artifactId>groovy</artifactId>
-        <version>2.5.8</version>
+        <version>3.0.11</version>
       </dependency>
 
       <dependency>
@@ -42,8 +49,9 @@
         <scope>provided</scope>
       </dependency>
 ```
-  * And then we can check that the groovy is configured successfully by compiling it using a command in terminal "mvn clean compile"
-  ![image](https://user-images.githubusercontent.com/101263525/173765966-17fc5178-e1b3-416b-99b5-d3d609e3e216.png)
+  * And then we can check that the groovy is configured successfully by compiling it using a command in terminal "mvn -f pom.xml clean compile"
+![image](https://user-images.githubusercontent.com/101263525/173828836-1d555eb2-670b-492d-9dac-6bb97f8a6026.png)
+
 
   * Creat a source folder named "src/main/groovy"
   * In this folder under a create a package groovy and under that package create a Groovy Class for example "Demo.groovy"
