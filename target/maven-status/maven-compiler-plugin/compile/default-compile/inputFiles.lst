@@ -13,7 +13,6 @@
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/dao/EnrollmentDao.java
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/controller/UserController.java
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/daoimpl/UserDaoImpl.java
-/home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/main/config.xml
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/daoimpl/EnrollmentDaoImpl.java
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/dao/CourseDao.java
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/model/Course.java
@@ -21,6 +20,7 @@
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/dao/UserDaoHibernate.java
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/rowmapper/EnrollmentRowMapperImpl.java
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/viewobjects/EnrollCourseVideoViewObject.java
+/home/ongraph/eclipse-workspace/udemyapp/target/generated-sources/groovy-stubs/main/udemyapp/groovy/Demo.java
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/daoimpl/UserDaoHibernateImpl.java
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/model/Instructor.java
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/controller/CourseVideoController.java
@@ -30,6 +30,7 @@
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/dao/CourseVideoDao.java
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/rowmapper/CourseVideoRowMapperImpl.java
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/rowmapper/EnrollCourseVideoRowMapperImpl.java
+/home/ongraph/eclipse-workspace/udemyapp/src/main/groovy/udemyapp/groovy/Test.java
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/rowmapper/InstructorRowMapperImpl.java
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/daoimpl/CourseVideoDaoImpl.java
 /home/ongraph/eclipse-workspace/udemyapp/src/main/java/udemyapp/daoimpl/CourseDaoImpl.java
