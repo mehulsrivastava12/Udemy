@@ -49,7 +49,7 @@
   * In this folder under a create a package groovy and under that package create a Groovy Class for example "Demo.groovy"
   * For testing groovy scripts 
 ```
-      package learning.groovy
+      package udemyapp.groovy
 
         class Demo {
           String getMessage() {
@@ -61,7 +61,7 @@
 
   * And in that package we can create a Test.java file to test groovy code is working or not.
 ``` 
-    package learning.groovy
+    package udemyapp.groovy
 
     public class Test {
       public static void main(String[] args) {
